@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MichiFairy - Haciendo magia en tu web</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Crimson+Text:wght@400;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 300;
+        }
+        
+        .heading-font {
+            font-family: 'Crimson Text', serif;
+            font-weight: 600;
+        }
+        
+        /* Magic sparkle effects */
+        .sparkle-container {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .sparkle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: linear-gradient(45deg, #38bdf8, #ff6b9d, #c44569);
+            border-radius: 50%;
+            animation: sparkleFloat 3s infinite ease-in-out;
+        }
+        
+        @keyframes sparkleFloat {
+            0%, 100% { 
+                opacity: 0;
+                transform: translateY(20px) scale(0);
+            }
+            50% { 
+                opacity: 1;
+                transform: translateY(-20px) scale(1);
+            }
+        }
+        
+        /* Floating animation */
+        .float {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+        
+        /* Gradient backgrounds */
+        .hero-gradient {
+            background: linear-gradient(135deg, #f0f9ff 0%, #ffeef8 30%, #f8f4ff 70%, #e0f2fe 100%);
+        }
+        
+        .card-gradient {
+            background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 50%, #fdf7ff 100%);
+        }
+        
+        .accent-gradient {
+            background: linear-gradient(135deg, #38bdf8 0%, #ff6b9d 50%, #c44569 100%);
+        }
+        
+        /* Glow effects */
+        .magic-glow {
+            box-shadow: 0 10px 40px rgba(56, 189, 248, 0.15), 0 5px 20px rgba(255, 107, 157, 0.1);
+        }
+        
+        .strong-glow {
+            box-shadow: 0 20px 60px rgba(56, 189, 248, 0.25), 0 10px 30px rgba(255, 107, 157, 0.2);
+        }
+        
+        /* Shimmer effect */
+        .shimmer {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .shimmer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            animation: shimmer 3s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+        
+        /* Particle system */
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: linear-gradient(45deg, #38bdf8, #ff6b9d);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        
+        /* Bubble effects */
+        .bubble {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: bubbleFloat 4s infinite ease-in-out;
+        }
+        
+        @keyframes bubbleFloat {
+            0% {
+                opacity: 0;
+                transform: translateY(100vh) scale(0);
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-100px) scale(1);
+            }
+        }
+        
+        /* Light effects */
+        .light-ray {
+            position: absolute;
+            width: 2px;
+            height: 100px;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.8), transparent);
+            pointer-events: none;
+            animation: lightRay 3s infinite ease-in-out;
+        }
+        
+        @keyframes lightRay {
+            0%, 100% {
+                opacity: 0;
+                transform: translateY(50px) rotate(0deg);
+            }
+            50% {
+                opacity: 1;
+                transform: translateY(-50px) rotate(10deg);
+            }
+        }
+        
+        /* Enhanced glow effects */
+        .magic-aura {
+            position: relative;
+            overflow: visible;
+        }
+        
+        .magic-aura::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            background: linear-gradient(45deg, #38bdf8, #ff6b9d, #c44569, #38bdf8);
+            border-radius: inherit;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            animation: rotate 3s linear infinite;
+        }
+        
+        .magic-aura:hover::before {
+            opacity: 0.3;
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Service card hover effects */
+        .service-card {
+            position: relative;
+            overflow: visible;
+        }
+        
+        .service-card-bubble {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: serviceBubble 1.5s ease-out forwards;
+        }
+        
+        @keyframes serviceBubble {
+            0% {
+                opacity: 1;
+                transform: scale(0) translateY(0);
+            }
+            50% {
+                opacity: 0.8;
+                transform: scale(1) translateY(-30px);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(0.3) translateY(-80px);
+            }
+        }
+        
+        /* Hover effects */
+        .hover-lift {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-8px);
+        }
+        
+        /* Light sweep effect for title - through letters */
+        .light-sweep {
+            position: relative;
+            background: linear-gradient(90deg, 
+                rgba(56, 189, 248, 1) 0%, 
+                rgba(255, 107, 157, 1) 25%, 
+                rgba(196, 69, 105, 1) 50%, 
+                rgba(255, 107, 157, 1) 75%, 
+                rgba(56, 189, 248, 1) 100%);
+            background-size: 200% 100%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: lightSweep 6s infinite;
+        }
+        
+        @keyframes lightSweep {
+            0% { background-position: -200% 0; }
+            50% { background-position: 200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        
+        /* Elegant title styling like Disar Reyes */
+        .elegant-title {
+            font-family: 'Crimson Text', serif;
+            font-weight: 400;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+        }
+        
+        .elegant-subtitle {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 300;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            font-size: 0.875rem;
+        }
+        
+        /* Logo sparkles effect */
+        .logo-sparkles {
+            position: relative;
+        }
+        
+        .logo-destello {
+            position: absolute;
+            width: 3px;
+            height: 15px;
+            background: linear-gradient(to top, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+            border-radius: 50px;
+            pointer-events: none;
+            animation: logoDestello 2s infinite ease-out;
+        }
+        
+        @keyframes logoDestello {
+            0% {
+                opacity: 0;
+                transform: translateY(20px) scale(0.5);
+            }
+            20% {
+                opacity: 1;
+                transform: translateY(10px) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-40px) scale(0.3);
+            }
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #38bdf8, #ff6b9d, #c44569);
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="hero-gradient min-h-screen text-gray-800 overflow-x-hidden">
+    <!-- Magical Background Effects -->
+    <div id="particles" class="fixed inset-0 pointer-events-none z-0"></div>
+    <div id="bubbles" class="fixed inset-0 pointer-events-none z-0"></div>
+    <div id="lightRays" class="fixed inset-0 pointer-events-none z-0"></div>
+
+    <!-- Navigation Menu -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-sky-100">
+        <div class="max-w-7xl mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-2xl overflow-hidden">
+                        <img src="https://res.cloudinary.com/dh7zke3v6/image/upload/v1756748807/MichiFairy_1_tzjozk.jpg" alt="MichiFairy Logo" class="w-full h-full object-cover" onerror="this.style.display='none';">
+                    </div>
+                    <span class="heading-font text-xl font-bold bg-gradient-to-r from-sky-400 to-pink-500 bg-clip-text text-transparent">MichiFairy</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#inicio" class="text-gray-700 hover:text-sky-500 transition-colors">Inicio</a>
+                    <a href="#sobre-mi" class="text-gray-700 hover:text-sky-500 transition-colors">Sobre Mí</a>
+                    <a href="#servicios" class="text-gray-700 hover:text-sky-500 transition-colors">Servicios</a>
+                    <a href="#portafolio" class="text-gray-700 hover:text-sky-500 transition-colors">Portafolio</a>
+                    <a href="#contacto" class="text-gray-700 hover:text-sky-500 transition-colors">Contacto</a>
+                </div>
+                <a href="https://wa.me/523521463934" target="_blank" class="bg-gradient-to-r from-sky-400 via-pink-500 via-purple-500 to-pink-600 text-white px-6 py-2 rounded-full font-semibold hover-lift">
+                    Cotizar
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header id="inicio" class="relative z-10 text-center py-32 px-4 sparkle-container mt-20 bg-gradient-to-br from-sky-600 via-purple-700 via-pink-600 to-orange-600 min-h-screen flex items-center">
+        <div class="max-w-4xl mx-auto">
+            <div class="float mb-8 relative">
+                <div class="w-48 h-48 mx-auto rounded-full overflow-hidden magic-glow mb-6 logo-sparkles border-4 border-white/20">
+                    <img src="https://res.cloudinary.com/dh7zke3v6/image/upload/v1756748807/MichiFairy_1_tzjozk.jpg" alt="MichiFairy Logo" class="w-full h-full object-cover" onerror="this.style.display='none';">
+                </div>
+            </div>
+            
+            <h1 class="elegant-title text-6xl md:text-8xl mb-6 light-sweep">
+                MichiFairy
+            </h1>
+            <div class="mb-8">
+                <h2 class="text-2xl md:text-3xl text-white/90 mb-4 font-light">
+                    Nancy Padilla Salazar
+                </h2>
+                <p class="text-lg md:text-xl text-white/80 mb-2">
+                    Ing. en Sistemas Computacionales
+                </p>
+                <p class="text-xl md:text-2xl text-white/90 font-light">
+                    Haciendo magia en tu web
+                </p>
+            </div>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+                <a href="https://wa.me/523521463934" target="_blank" class="inline-block bg-gradient-to-r from-sky-400 via-pink-500 via-purple-500 to-pink-600 text-white font-bold py-4 px-8 rounded-2xl hover-lift strong-glow transition-all duration-300 text-lg">
+                    💬 Contactar por WhatsApp
+                </a>
+                <a href="#formulario" class="inline-block bg-white/20 backdrop-blur-sm text-white font-bold py-4 px-8 rounded-2xl hover-lift magic-glow transition-all duration-300 text-lg border border-white/30">
+                    📝 Enviar Cotización
+                </a>
+            </div>
+            <div class="w-24 h-1 bg-gradient-to-r from-sky-400 via-pink-500 via-purple-500 to-pink-600 mx-auto rounded-full"></div>
+        </div>
+        
+        <!-- Floating sparkles -->
+        <div class="sparkle" style="top: 20%; left: 15%; animation-delay: 0s;"></div>
+        <div class="sparkle" style="top: 30%; right: 20%; animation-delay: 1s;"></div>
+        <div class="sparkle" style="top: 60%; left: 10%; animation-delay: 2s;"></div>
+        <div class="sparkle" style="top: 70%; right: 15%; animation-delay: 0.5s;"></div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="relative z-10 max-w-7xl mx-auto px-4 pb-20">
+        <!-- About Section -->
+        <section id="sobre-mi" class="mb-24 bg-gradient-to-br from-purple-50 via-pink-50 to-orange-50 py-24 -mx-4 px-4">
+            <div class="max-w-7xl mx-auto">
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                    <div class="text-center lg:text-left">
+                        <h2 class="elegant-title text-4xl md:text-5xl mb-6 text-gray-800">
+                            Sobre Mí
+                        </h2>
+                        <div class="mb-8">
+                            <h3 class="text-2xl font-semibold text-purple-700 mb-2">Nancy Padilla Salazar</h3>
+                            <p class="text-lg text-purple-600 mb-4">Ing. en Sistemas Computacionales</p>
+                            <p class="text-xl text-gray-700 leading-relaxed mb-6">
+                                Amo diseñar, aportar colores a los diseños y hacerlos resaltar ante la competencia con una marca de novedad e innovación.
+                            </p>
+                            <p class="text-lg text-gray-600 leading-relaxed">
+                                Mi pasión es transformar ideas en experiencias web únicas que no solo funcionan perfectamente, sino que también cautivan con diseños coloridos y modernos que destacan en el mercado digital.
+                            </p>
+                        </div>
+                        <div class="flex flex-wrap gap-3 justify-center lg:justify-start">
+                            <span class="bg-purple-100 text-purple-700 px-4 py-2 rounded-full text-sm font-semibold">Desarrollo Web</span>
+                            <span class="bg-pink-100 text-pink-700 px-4 py-2 rounded-full text-sm font-semibold">Diseño Colorido</span>
+                            <span class="bg-orange-100 text-orange-700 px-4 py-2 rounded-full text-sm font-semibold">Innovación</span>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <div class="relative inline-block">
+                            <img src="https://res.cloudinary.com/dh7zke3v6/image/upload/v1756579214/nancypadilla_ywxcso.jpg" 
+                                 alt="Nancy Padilla Salazar - Ing. en Sistemas Computacionales" 
+                                 class="w-80 h-80 rounded-3xl shadow-2xl mx-auto object-cover"
+                                 onerror="this.style.display='none';">
+                            <div class="absolute -top-4 -right-4 w-16 h-16 bg-gradient-to-br from-purple-400 to-pink-500 rounded-2xl flex items-center justify-center shadow-lg">
+                                <span class="text-white text-2xl">✨</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="servicios" class="mb-24 bg-gradient-to-br from-sky-50 via-blue-50 to-indigo-50 py-24 -mx-4 px-4">
+            <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="elegant-title text-4xl md:text-5xl mb-6 text-gray-800">
+                    Nuestros Servicios
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Amo diseñar, aportar colores a los diseños y hacerlos resaltar ante la competencia con una marca de novedad e innovación
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12 mb-16">
+                <div class="bg-gradient-to-br from-white via-sky-50 to-pink-50 p-12 rounded-3xl shadow-2xl hover:shadow-3xl shimmer border border-sky-100/50 backdrop-blur-sm service-card">
+                    <div class="w-20 h-20 bg-gradient-to-br from-sky-400 via-purple-500 to-pink-500 rounded-3xl flex items-center justify-center mb-8 mx-auto shadow-lg">
+                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9v-9m0-9v9"></path>
+                        </svg>
+                    </div>
+                    <h3 class="elegant-title text-3xl mb-6 text-center bg-gradient-to-r from-sky-600 to-purple-600 bg-clip-text text-transparent">Páginas de Contacto</h3>
+                    <p class="text-gray-700 text-center leading-relaxed text-lg">Páginas web sencillas de contacto para compartir y representar su marca de manera profesional.</p>
+                </div>
+                
+                <div class="bg-gradient-to-br from-white via-purple-50 to-pink-50 p-12 rounded-3xl shadow-2xl hover:shadow-3xl shimmer border border-purple-100/50 backdrop-blur-sm service-card">
+                    <div class="w-20 h-20 bg-gradient-to-br from-purple-400 via-pink-500 to-sky-400 rounded-3xl flex items-center justify-center mb-8 mx-auto shadow-lg">
+                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="elegant-title text-3xl mb-6 text-center bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">Páginas de Inicio</h3>
+                    <p class="text-gray-700 text-center leading-relaxed text-lg">Páginas web de inicio para dar una noción de lo que es su empresa y crear una primera impresión profesional.</p>
+                </div>
+            </div>
+            </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Section -->
+        <section id="portafolio" class="mb-24 bg-gradient-to-br from-purple-50 via-pink-50 to-orange-50 py-24 -mx-4 px-4">
+            <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="elegant-title text-4xl md:text-5xl mb-6 text-gray-800">
+                    Portafolio Encantado
+                </h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    Cada proyecto es una historia de transformación digital
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12">
+                <a href="https://bubblefest.netlify.app/" target="_blank" class="bg-white p-8 rounded-3xl shadow-2xl hover:shadow-3xl hover-lift shimmer group border border-purple-100/50">
+                    <!-- Vista previa -->
+                    <div class="h-48 bg-gradient-to-br from-purple-400 via-pink-500 to-orange-400 rounded-2xl mb-6 flex items-center justify-center group-hover:scale-105 transition-transform duration-300 overflow-hidden">
+                        <div class="text-white text-center">
+                            <div class="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mb-4 mx-auto backdrop-blur-sm">
+                                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4V2a1 1 0 011-1h8a1 1 0 011 1v2m-9 0h10m-10 0a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V6a2 2 0 00-2-2"></path>
+                                </svg>
+                            </div>
+                            <div class="text-sm font-semibold">Vista Previa</div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center mb-4">
+                        <span class="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-xs font-semibold mr-3">Festival</span>
+                        <span class="bg-pink-100 text-pink-700 px-3 py-1 rounded-full text-xs font-semibold">Interactivo</span>
+                    </div>
+                    
+                    <h3 class="elegant-title text-2xl mb-3 text-gray-800">BubbleFest</h3>
+                    <p class="text-gray-600 mb-4 leading-relaxed">Festival interactivo con experiencia inmersiva, efectos visuales espectaculares y navegación fluida que cautiva a los visitantes.</p>
+                    
+                    <div class="flex items-center text-purple-600 font-semibold">
+                        <span>Ver proyecto</span>
+                        <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </div>
+                </a>
+                
+                <a href="https://disarreyes.netlify.app/" target="_blank" class="bg-white p-8 rounded-3xl shadow-2xl hover:shadow-3xl hover-lift shimmer group border border-blue-100/50">
+                    <!-- Vista previa -->
+                    <div class="h-48 bg-gradient-to-br from-blue-500 via-indigo-600 to-purple-600 rounded-2xl mb-6 flex items-center justify-center group-hover:scale-105 transition-transform duration-300 overflow-hidden">
+                        <div class="text-white text-center">
+                            <div class="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mb-4 mx-auto backdrop-blur-sm">
+                                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
+                                </svg>
+                            </div>
+                            <div class="text-sm font-semibold">Vista Previa</div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center mb-4">
+                        <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-semibold mr-3">Elegante</span>
+                        <span class="bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full text-xs font-semibold">Sofisticado</span>
+                    </div>
+                    
+                    <h3 class="elegant-title text-2xl mb-3 text-gray-800">Disar Reyes</h3>
+                    <p class="text-gray-600 mb-4 leading-relaxed">Sitio web elegante y sofisticado con diseño minimalista, tipografía cuidada y experiencia de usuario excepcional.</p>
+                    
+                    <div class="flex items-center text-blue-600 font-semibold">
+                        <span>Ver proyecto</span>
+                        <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </div>
+                </a>
+                
+                <a href="https://karseb.netlify.app/" target="_blank" class="bg-white p-8 rounded-3xl shadow-2xl hover:shadow-3xl hover-lift shimmer group border border-green-100/50">
+                    <!-- Vista previa -->
+                    <div class="h-48 bg-gradient-to-br from-green-500 via-teal-600 to-blue-600 rounded-2xl mb-6 flex items-center justify-center group-hover:scale-105 transition-transform duration-300 overflow-hidden">
+                        <div class="text-white text-center">
+                            <div class="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mb-4 mx-auto backdrop-blur-sm">
+                                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                                </svg>
+                            </div>
+                            <div class="text-sm font-semibold">Vista Previa</div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center mb-4">
+                        <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-semibold mr-3">Automotriz</span>
+                        <span class="bg-teal-100 text-teal-700 px-3 py-1 rounded-full text-xs font-semibold">Innovador</span>
+                    </div>
+                    
+                    <h3 class="elegant-title text-2xl mb-3 text-gray-800">KarSeb</h3>
+                    <p class="text-gray-600 mb-4 leading-relaxed">Plataforma automotriz innovadora con funcionalidades avanzadas, diseño moderno y experiencia optimizada para el sector.</p>
+                    
+                    <div class="flex items-center text-green-600 font-semibold">
+                        <span>Ver proyecto</span>
+                        <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </div>
+                </a>
+                
+                <a href="https://casaparaancianosjosemariacabadas.org/" target="_blank" class="bg-white p-8 rounded-3xl shadow-2xl hover:shadow-3xl hover-lift shimmer group border border-orange-100/50">
+                    <!-- Vista previa -->
+                    <div class="h-48 bg-gradient-to-br from-orange-500 via-red-500 to-pink-600 rounded-2xl mb-6 flex items-center justify-center group-hover:scale-105 transition-transform duration-300 overflow-hidden">
+                        <div class="text-white text-center">
+                            <div class="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mb-4 mx-auto backdrop-blur-sm">
+                                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                                </svg>
+                            </div>
+                            <div class="text-sm font-semibold">Vista Previa</div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center mb-4">
+                        <span class="bg-orange-100 text-orange-700 px-3 py-1 rounded-full text-xs font-semibold mr-3">Institucional</span>
+                        <span class="bg-red-100 text-red-700 px-3 py-1 rounded-full text-xs font-semibold">Completo</span>
+                    </div>
+                    
+                    <h3 class="elegant-title text-2xl mb-3 text-gray-800">Casa José María</h3>
+                    <p class="text-gray-600 mb-4 leading-relaxed">Sitio institucional completo con información detallada, galería de imágenes y sistema de contacto profesional.</p>
+                    
+                    <div class="flex items-center text-orange-600 font-semibold">
+                        <span>Ver proyecto</span>
+                        <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </div>
+                </a>
+            </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="mb-24 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 py-24 -mx-4 px-4">
+            <div class="max-w-7xl mx-auto">
+            <div class="card-gradient p-16 rounded-3xl strong-glow text-center max-w-5xl mx-auto shimmer">
+                <div class="max-w-3xl mx-auto">
+                    <h2 class="elegant-title text-4xl md:text-5xl mb-8 text-gray-800">
+                        ¿Listo para crear magia juntos?
+                    </h2>
+                    <p class="text-xl mb-8 text-gray-600 leading-relaxed">
+                        Ofrezco soluciones web personalizadas que transforman tu presencia digital y atraen clientes de manera profesional y efectiva.
+                    </p>
+                    <div class="inline-block px-8 py-4 bg-gradient-to-r from-sky-400 via-pink-500 via-purple-500 to-pink-600 text-white font-semibold rounded-2xl text-xl">
+                        ¡Cotiza conmigo!
+                    </div>
+                </div>
+            </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contacto" class="bg-gradient-to-br from-pink-50 via-rose-50 to-orange-50 py-24">
+            <div class="max-w-7xl mx-auto px-4 text-center">
+            <div class="mb-12">
+                <h2 class="elegant-title text-4xl md:text-5xl mb-6 text-gray-800">
+                    Contacto Profesional
+                </h2>
+                <p class="text-xl text-gray-600">
+                    Conversemos sobre tu próximo proyecto
+                </p>
+            </div>
+            
+            <div class="card-gradient p-12 rounded-3xl magic-glow max-w-md mx-auto">
+                <div class="w-20 h-20 accent-gradient rounded-2xl flex items-center justify-center mb-6 mx-auto">
+                    <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                    </svg>
+                </div>
+                <p class="text-lg mb-6 text-gray-700">¡Hablemos por WhatsApp!</p>
+                <a href="https://wa.me/523521463934" target="_blank" class="inline-block bg-gradient-to-r from-sky-400 via-pink-500 via-purple-500 to-pink-600 text-white font-semibold py-4 px-8 rounded-2xl hover-lift strong-glow transition-all duration-300">
+                    Enviar mensaje
+                </a>
+                <p class="text-sm mt-4 text-gray-500 font-mono">3521463934</p>
+            </div>
+            </div>
+        </section>
+
+        <!-- Quote Form Section -->
+        <section id="formulario" class="bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 py-24">
+            <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="elegant-title text-4xl md:text-5xl mb-6 text-gray-800">
+                    Solicita tu Cotización
+                </h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    Completa el formulario y te ayudo a estructurar tu mensaje para WhatsApp
+                </p>
+            </div>
+
+            <div class="max-w-4xl mx-auto">
+                <div class="grid lg:grid-cols-2 gap-12">
+                    <!-- Form -->
+                    <div class="bg-gradient-to-br from-white via-sky-50 to-purple-50 p-8 rounded-3xl shadow-2xl border border-sky-100/50">
+                        <h3 class="elegant-title text-2xl mb-6 text-center text-gray-800">Cuéntame sobre tu proyecto</h3>
+                        <form id="quoteForm" class="space-y-6">
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Nombre *</label>
+                                <input type="text" id="nombre" required class="w-full px-4 py-3 rounded-xl border border-sky-200 focus:border-sky-400 focus:ring-2 focus:ring-sky-200 outline-none transition-all">
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Empresa/Proyecto</label>
+                                <input type="text" id="empresa" class="w-full px-4 py-3 rounded-xl border border-sky-200 focus:border-sky-400 focus:ring-2 focus:ring-sky-200 outline-none transition-all">
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Tipo de proyecto *</label>
+                                <select id="tipoProyecto" required class="w-full px-4 py-3 rounded-xl border border-sky-200 focus:border-sky-400 focus:ring-2 focus:ring-sky-200 outline-none transition-all">
+                                    <option value="">Selecciona una opción</option>
+                                    <option value="Sitio web corporativo">Sitio web corporativo</option>
+                                    <option value="Tienda online">Tienda online</option>
+                                    <option value="Landing page">Landing page</option>
+                                    <option value="Portafolio personal">Portafolio personal</option>
+                                    <option value="Blog">Blog</option>
+                                    <option value="Otro">Otro</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Presupuesto estimado</label>
+                                <select id="presupuesto" class="w-full px-4 py-3 rounded-xl border border-sky-200 focus:border-sky-400 focus:ring-2 focus:ring-sky-200 outline-none transition-all">
+                                    <option value="">Selecciona un rango</option>
+                                    <option value="$5,000 - $15,000 MXN">$5,000 - $15,000 MXN</option>
+                                    <option value="$15,000 - $30,000 MXN">$15,000 - $30,000 MXN</option>
+                                    <option value="$30,000 - $50,000 MXN">$30,000 - $50,000 MXN</option>
+                                    <option value="Más de $50,000 MXN">Más de $50,000 MXN</option>
+                                    <option value="Por definir">Por definir</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Descripción del proyecto *</label>
+                                <textarea id="descripcion" required rows="4" class="w-full px-4 py-3 rounded-xl border border-sky-200 focus:border-sky-400 focus:ring-2 focus:ring-sky-200 outline-none transition-all" placeholder="Describe tu proyecto, objetivos, funcionalidades que necesitas..."></textarea>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Fecha límite</label>
+                                <input type="date" id="fechaLimite" class="w-full px-4 py-3 rounded-xl border border-sky-200 focus:border-sky-400 focus:ring-2 focus:ring-sky-200 outline-none transition-all">
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <!-- Preview -->
+                    <div class="bg-gradient-to-br from-white via-purple-50 to-pink-50 p-8 rounded-3xl shadow-2xl border border-purple-100/50">
+                        <h3 class="elegant-title text-2xl mb-6 text-center text-gray-800">Vista previa del mensaje</h3>
+                        <div class="bg-green-50 p-6 rounded-2xl border border-green-200 mb-6">
+                            <div class="flex items-center mb-4">
+                                <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center mr-3">
+                                    <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+                                    </svg>
+                                </div>
+                                <span class="font-semibold text-green-700">Mensaje para WhatsApp</span>
+                            </div>
+                            <div id="messagePreview" class="text-gray-700 whitespace-pre-line text-sm">
+                                Completa el formulario para ver cómo quedará tu mensaje...
+                            </div>
+                        </div>
+                        
+                        <button id="sendWhatsApp" disabled class="w-full bg-green-500 hover:bg-green-600 disabled:bg-gray-300 disabled:cursor-not-allowed text-white font-bold py-4 px-6 rounded-2xl transition-all duration-300 flex items-center justify-center space-x-2">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+                            </svg>
+                            <span>Enviar por WhatsApp</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="relative z-10 bg-gradient-to-br from-gray-900 via-purple-900 to-sky-900 text-white py-16 px-4 mt-20">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-3 gap-12 mb-12">
+                <!-- Brand -->
+                <div class="text-center md:text-left">
+                    <div class="flex items-center justify-center md:justify-start mb-4">
+                        <div class="w-12 h-12 rounded-2xl overflow-hidden mr-3">
+                            <img src="https://res.cloudinary.com/dh7zke3v6/image/upload/v1756748807/MichiFairy_1_tzjozk.jpg" alt="MichiFairy Logo" class="w-full h-full object-cover" onerror="this.style.display='none';">
+                        </div>
+                        <span class="heading-font text-2xl font-bold bg-gradient-to-r from-sky-300 to-pink-300 bg-clip-text text-transparent">MichiFairy</span>
+                    </div>
+                    <p class="text-gray-300 leading-relaxed">
+                        Nancy Padilla Salazar - Ing. en Sistemas Computacionales. Transformando ideas en experiencias web coloridas e innovadoras que destacan ante la competencia.
+                    </p>
+                </div>
+                
+                <!-- Services -->
+                <div class="text-center md:text-left">
+                    <h4 class="heading-font text-xl font-bold mb-4 text-sky-300">Servicios</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li>Desarrollo Web</li>
+                        <li>Diseño Responsivo</li>
+                        <li>Landing Pages</li>
+                        <li>Tiendas Online</li>
+                        <li>Sitios Corporativos</li>
+                    </ul>
+                </div>
+                
+                <!-- Contact -->
+                <div class="text-center md:text-left">
+                    <h4 class="heading-font text-xl font-bold mb-4 text-pink-300">Contacto</h4>
+                    <div class="space-y-3">
+                        <a href="https://wa.me/523521463934" target="_blank" class="flex items-center justify-center md:justify-start text-gray-300 hover:text-sky-300 transition-colors">
+                            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+                            </svg>
+                            3521463934
+                        </a>
+                        <div class="flex justify-center md:justify-start space-x-4 mt-4">
+                            <a href="#inicio" class="text-gray-300 hover:text-sky-300 transition-colors">Inicio</a>
+                            <a href="#servicios" class="text-gray-300 hover:text-sky-300 transition-colors">Servicios</a>
+                            <a href="#portafolio" class="text-gray-300 hover:text-sky-300 transition-colors">Portafolio</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 pt-8 text-center">
+                <div class="w-24 h-1 accent-gradient mx-auto rounded-full mb-6"></div>
+                <p class="text-gray-400">
+                    © 2024 MichiFairy - Haciendo magia en tu web ✨
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Particle system
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * window.innerWidth + 'px';
+            particle.style.top = window.innerHeight + 'px';
+            
+            const duration = Math.random() * 3000 + 2000;
+            const size = Math.random() * 3 + 1;
+            
+            particle.style.width = size + 'px';
+            particle.style.height = size + 'px';
+            particle.style.opacity = Math.random() * 0.5 + 0.2;
+            
+            document.getElementById('particles').appendChild(particle);
+            
+            // Animate particle
+            particle.animate([
+                { transform: 'translateY(0px)', opacity: particle.style.opacity },
+                { transform: `translateY(-${window.innerHeight + 100}px)`, opacity: 0 }
+            ], {
+                duration: duration,
+                easing: 'linear'
+            }).onfinish = () => {
+                particle.remove();
+            };
+        }
+        
+        // Bubble system
+        function createBubble() {
+            const bubble = document.createElement('div');
+            bubble.className = 'bubble';
+            
+            const size = Math.random() * 60 + 20;
+            const colors = ['rgba(56, 189, 248, 0.3)', 'rgba(255, 107, 157, 0.3)', 'rgba(196, 69, 105, 0.3)', 'rgba(147, 51, 234, 0.3)'];
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            
+            bubble.style.width = size + 'px';
+            bubble.style.height = size + 'px';
+            bubble.style.left = Math.random() * window.innerWidth + 'px';
+            bubble.style.background = `radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), ${color})`;
+            bubble.style.animationDelay = Math.random() * 2 + 's';
+            bubble.style.animationDuration = (Math.random() * 3 + 4) + 's';
+            
+            document.getElementById('bubbles').appendChild(bubble);
+            
+            setTimeout(() => {
+                if (bubble.parentNode) {
+                    bubble.remove();
+                }
+            }, 7000);
+        }
+        
+        // Light ray system
+        function createLightRay() {
+            const ray = document.createElement('div');
+            ray.className = 'light-ray';
+            ray.style.left = Math.random() * window.innerWidth + 'px';
+            ray.style.top = Math.random() * window.innerHeight + 'px';
+            ray.style.animationDelay = Math.random() * 2 + 's';
+            
+            document.getElementById('lightRays').appendChild(ray);
+            
+            setTimeout(() => {
+                if (ray.parentNode) {
+                    ray.remove();
+                }
+            }, 3000);
+        }
+        
+        // Logo sparkles system
+        function createLogoDestello() {
+            const logo = document.querySelector('.logo-sparkles');
+            if (!logo) return;
+            
+            const destello = document.createElement('div');
+            destello.className = 'logo-destello';
+            
+            // Position around the logo
+            const logoRect = logo.getBoundingClientRect();
+            const angle = Math.random() * 2 * Math.PI;
+            const radius = 120; // Distance from logo center
+            
+            const x = Math.cos(angle) * radius;
+            const y = Math.sin(angle) * radius;
+            
+            destello.style.left = `calc(50% + ${x}px)`;
+            destello.style.top = `calc(50% + ${y}px)`;
+            destello.style.animationDelay = Math.random() * 1 + 's';
+            
+            logo.appendChild(destello);
+            
+            setTimeout(() => {
+                if (destello.parentNode) {
+                    destello.remove();
+                }
+            }, 2000);
+        }
+        
+        // Create effects periodically
+        setInterval(createParticle, 300);
+        setInterval(createBubble, 800);
+        setInterval(createLightRay, 1500);
+        setInterval(createLogoDestello, 400);
+        
+        // Add floating animation with stagger
+        const floatElements = document.querySelectorAll('.float, .hover-lift');
+        floatElements.forEach((element, index) => {
+            element.style.animationDelay = (index * 0.2) + 's';
+        });
+        
+        // Smooth scroll for internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Add sparkle effect on mouse move
+        document.addEventListener('mousemove', (e) => {
+            if (Math.random() > 0.95) {
+                const sparkle = document.createElement('div');
+                sparkle.className = 'sparkle';
+                sparkle.style.left = e.clientX + 'px';
+                sparkle.style.top = e.clientY + 'px';
+                sparkle.style.position = 'fixed';
+                sparkle.style.pointerEvents = 'none';
+                sparkle.style.zIndex = '1000';
+                
+                document.body.appendChild(sparkle);
+                
+                setTimeout(() => {
+                    sparkle.remove();
+                }, 3000);
+            }
+        });
+        
+        // Service card hover effects
+        function createServiceBubbles(card) {
+            const colors = ['#38bdf8', '#ff6b9d', '#c44569', '#9333ea', '#06b6d4'];
+            const rect = card.getBoundingClientRect();
+            
+            for (let i = 0; i < 8; i++) {
+                const bubble = document.createElement('div');
+                bubble.className = 'service-card-bubble';
+                
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                bubble.style.background = `radial-gradient(circle, ${color}, ${color}aa)`;
+                
+                // Random position within the card
+                const x = Math.random() * rect.width;
+                const y = Math.random() * rect.height;
+                
+                bubble.style.left = x + 'px';
+                bubble.style.top = y + 'px';
+                bubble.style.animationDelay = Math.random() * 0.5 + 's';
+                
+                card.appendChild(bubble);
+                
+                setTimeout(() => {
+                    if (bubble.parentNode) {
+                        bubble.remove();
+                    }
+                }, 1500);
+            }
+        }
+        
+        // Add hover listeners to service cards
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                createServiceBubbles(card);
+            });
+        });
+        
+        // Form functionality
+        const formInputs = ['nombre', 'empresa', 'tipoProyecto', 'presupuesto', 'descripcion', 'fechaLimite'];
+        const messagePreview = document.getElementById('messagePreview');
+        const sendButton = document.getElementById('sendWhatsApp');
+        
+        function updatePreview() {
+            const nombre = document.getElementById('nombre').value;
+            const empresa = document.getElementById('empresa').value;
+            const tipoProyecto = document.getElementById('tipoProyecto').value;
+            const presupuesto = document.getElementById('presupuesto').value;
+            const descripcion = document.getElementById('descripcion').value;
+            const fechaLimite = document.getElementById('fechaLimite').value;
+            
+            if (!nombre || !tipoProyecto || !descripcion) {
+                messagePreview.textContent = 'Completa los campos obligatorios para ver cómo quedará tu mensaje...';
+                sendButton.disabled = true;
+                return;
+            }
+            
+            let message = `¡Hola! Soy ${nombre}`;
+            if (empresa) message += ` de ${empresa}`;
+            message += `.\n\nEstoy interesado en solicitar una cotización para un proyecto de ${tipoProyecto}.\n\n`;
+            message += `📋 DETALLES DEL PROYECTO:\n${descripcion}\n\n`;
+            
+            if (presupuesto) {
+                message += `💰 PRESUPUESTO ESTIMADO: ${presupuesto}\n\n`;
+            }
+            
+            if (fechaLimite) {
+                const fecha = new Date(fechaLimite).toLocaleDateString('es-ES');
+                message += `📅 FECHA LÍMITE: ${fecha}\n\n`;
+            }
+            
+            message += `¿Podrías ayudarme con una cotización detallada?\n\n¡Gracias! ✨`;
+            
+            messagePreview.textContent = message;
+            sendButton.disabled = false;
+        }
+        
+        // Add event listeners to form inputs
+        formInputs.forEach(inputId => {
+            const element = document.getElementById(inputId);
+            element.addEventListener('input', updatePreview);
+            element.addEventListener('change', updatePreview);
+        });
+        
+        // Send to WhatsApp
+        sendButton.addEventListener('click', () => {
+            const message = encodeURIComponent(messagePreview.textContent);
+            const whatsappUrl = `https://wa.me/523521463934?text=${message}`;
+            window.open(whatsappUrl, '_blank');
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9787289b969af863',t:'MTc1Njc1NDc3OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

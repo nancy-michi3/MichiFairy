@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MichiFairy - Haciendo magia en tu web</title>
-    <link rel="icon" type="image/x-icon" href="https://res.cloudinary.com/dh7zke3v6/image/upload/v1756748807/MichiFairy_1_tzjozk.jpg">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3CclipPath id='roundedCorners'%3E%3Crect width='100' height='100' rx='20' ry='20'/%3E%3C/clipPath%3E%3C/defs%3E%3Cimage href='https://res.cloudinary.com/dh7zke3v6/image/upload/v1756748807/MichiFairy_1_tzjozk.jpg' width='100' height='100' clip-path='url(%23roundedCorners)'/%3E%3C/svg%3E">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Crimson+Text:wght@400;600;700&display=swap');
@@ -313,8 +313,13 @@
     <div id="bubbles" class="fixed inset-0 pointer-events-none z-0"></div>
     <div id="lightRays" class="fixed inset-0 pointer-events-none z-0"></div>
 
+    <!-- Progress Bar -->
+    <div class="fixed top-0 left-0 right-0 z-[60] h-1 bg-gray-200/30">
+        <div id="progressBar" class="h-full bg-gradient-to-r from-sky-400 via-purple-500 via-pink-500 to-orange-500 transition-all duration-300 ease-out" style="width: 0%"></div>
+    </div>
+
     <!-- Navigation Menu -->
-    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-sky-100">
+    <nav class="fixed top-1 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-sky-100">
         <div class="max-w-7xl mx-auto px-4 py-4">
             <div class="flex justify-between items-center">
                 <div class="flex items-center space-x-3">
@@ -330,7 +335,7 @@
                     <a href="#portafolio" class="text-gray-700 hover:text-sky-500 transition-colors">Portafolio</a>
                     <a href="#contacto" class="text-gray-700 hover:text-sky-500 transition-colors">Contacto</a>
                 </div>
-                <a href="https://wa.me/523521463934" target="_blank" class="bg-gradient-to-r from-sky-400 via-pink-500 via-purple-500 to-pink-600 text-white px-6 py-2 rounded-full font-semibold hover-lift">
+                <a href="#formulario" class="bg-gradient-to-r from-sky-400 via-pink-500 via-purple-500 to-pink-600 text-white px-6 py-2 rounded-full font-semibold hover-lift">
                     Cotizar
                 </a>
             </div>
@@ -375,7 +380,7 @@
     <!-- Main Content -->
     <main class="relative z-10 max-w-7xl mx-auto px-4 pb-20">
         <!-- Creative Space Section -->
-        <section class="mb-24 py-24">
+        <section class="mb-24 py-24 bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50 -mx-4 px-4">
             <div class="max-w-6xl mx-auto">
                 <div class="grid lg:grid-cols-2 gap-16 items-center">
                     <div class="order-2 lg:order-1">
@@ -462,7 +467,7 @@
         </section>
 
         <!-- About Section -->
-        <section id="sobre-mi" class="mb-24 py-32 bg-gradient-to-br from-slate-50 via-gray-50 to-zinc-50">
+        <section id="sobre-mi" class="mb-24 py-32 bg-gradient-to-br from-violet-50 via-purple-50 to-fuchsia-50 -mx-4 px-4">
             <div class="max-w-7xl mx-auto px-4">
                 <div class="grid lg:grid-cols-2 gap-20 items-center">
                     <!-- Left Column - Image -->
@@ -671,7 +676,7 @@
         </section>
 
         <!-- CTA Section -->
-        <section class="mb-24 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 py-24 -mx-4 px-4">
+        <section class="mb-24 bg-gradient-to-br from-amber-50 via-orange-50 to-red-50 py-24 -mx-4 px-4">
             <div class="max-w-7xl mx-auto">
             <div class="card-gradient p-16 rounded-3xl strong-glow text-center max-w-5xl mx-auto shimmer">
                 <div class="max-w-3xl mx-auto">
@@ -690,7 +695,7 @@
         </section>
 
         <!-- Contact Section -->
-        <section id="contacto" class="bg-gradient-to-br from-pink-50 via-rose-50 to-orange-50 py-24">
+        <section id="contacto" class="bg-gradient-to-br from-lime-50 via-green-50 to-emerald-50 py-24 -mx-4 px-4">
             <div class="max-w-7xl mx-auto px-4 text-center">
             <div class="mb-12">
                 <h2 class="elegant-title text-4xl md:text-5xl mb-6 text-gray-800">
@@ -717,7 +722,7 @@
         </section>
 
         <!-- Quote Form Section -->
-        <section id="formulario" class="bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 py-24">
+        <section id="formulario" class="bg-gradient-to-br from-slate-50 via-zinc-50 to-stone-50 py-24 -mx-4 px-4">
             <div class="max-w-7xl mx-auto px-4">
             <div class="text-center mb-16">
                 <h2 class="elegant-title text-4xl md:text-5xl mb-6 text-gray-800">
@@ -1100,6 +1105,24 @@
             const whatsappUrl = `https://wa.me/523521463934?text=${message}`;
             window.open(whatsappUrl, '_blank');
         });
+        
+        // Progress bar functionality
+        function updateProgressBar() {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercent = (scrollTop / scrollHeight) * 100;
+            
+            const progressBar = document.getElementById('progressBar');
+            progressBar.style.width = Math.min(scrollPercent, 100) + '%';
+        }
+        
+        // Update progress bar on scroll
+        window.addEventListener('scroll', updateProgressBar);
+        window.addEventListener('resize', updateProgressBar);
+        
+        // Initial call
+        updateProgressBar();
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9787629b1548f863',t:'MTc1Njc1NzE1NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97876dc3a732f863',t:'MTc1Njc1NzYxMi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
+

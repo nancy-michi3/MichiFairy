@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MichiFairy - Haciendo magia en tu web</title>
-    <link rel="icon" type="image/x-icon" href="https://res.cloudinary.com/dh7zke3v6/image/upload/v1756748807/MichiFairy_1_tzjozk.jpg">
-    <link rel="shortcut icon" type="image/x-icon" href="https://res.cloudinary.com/dh7zke3v6/image/upload/v1756748807/MichiFairy_1_tzjozk.jpg">
+    <title>Michistema - La mágia del diseño</title>
+    <link rel="icon" type="image/x-icon" href="https://res.cloudinary.com/dh7zke3v6/image/upload/v1756854709/logo_michistema_ylvqbl.jpg">
+    <link rel="shortcut icon" type="image/x-icon" href="https://res.cloudinary.com/dh7zke3v6/image/upload/v1756854709/logo_michistema_ylvqbl.jpg">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Crimson+Text:wght@400;600;700&display=swap');
@@ -309,6 +309,45 @@
             }
         }
         
+        /* Butterfly decorations */
+        .butterfly {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            opacity: 0.7;
+            pointer-events: none;
+            animation: butterflyFloat 8s infinite ease-in-out;
+        }
+        
+        .butterfly.small {
+            width: 20px;
+            height: 20px;
+        }
+        
+        .butterfly.large {
+            width: 40px;
+            height: 40px;
+        }
+        
+        @keyframes butterflyFloat {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg);
+                opacity: 0.7;
+            }
+            25% {
+                transform: translateY(-20px) rotate(5deg);
+                opacity: 0.9;
+            }
+            50% {
+                transform: translateY(-10px) rotate(-3deg);
+                opacity: 0.8;
+            }
+            75% {
+                transform: translateY(-25px) rotate(8deg);
+                opacity: 0.6;
+            }
+        }
+        
         /* Custom scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
@@ -342,9 +381,9 @@
                 <!-- Logo -->
                 <div class="flex items-center space-x-3">
                     <div class="w-12 h-12 rounded-full overflow-hidden ring-4 ring-white/30">
-                        <img src="https://res.cloudinary.com/dh7zke3v6/image/upload/v1756748807/MichiFairy_1_tzjozk.jpg" alt="MichiFairy Logo" class="w-full h-full object-cover" onerror="this.style.display='none';">
+                        <img src="https://res.cloudinary.com/dh7zke3v6/image/upload/v1756854709/logo_michistema_ylvqbl.jpg" alt="Michistema Logo" class="w-full h-full object-cover" onerror="this.style.display='none';">
                     </div>
-                    <div class="text-2xl font-bold text-white drop-shadow-lg">MichiFairy</div>
+                    <div class="text-2xl font-bold text-white drop-shadow-lg">Michistema</div>
                 </div>
                 
                 <!-- Navigation Links -->
@@ -356,38 +395,63 @@
                     <a href="#contacto" class="text-white/90 hover:text-white transition-colors font-medium drop-shadow-md">Contacto</a>
                 </div>
                 
+                <!-- Mobile Menu Button -->
+                <div class="lg:hidden">
+                    <button id="mobileMenuBtn" class="bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white p-3 rounded-xl transition-all duration-300 border border-white/30">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+                
                 <!-- CTA Button -->
-                <div class="flex items-center space-x-4">
-                    <a href="#formulario" class="bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white px-8 py-4 rounded-xl font-bold transition-all duration-300 border border-white/30 shadow-lg">
+                <div class="hidden lg:flex items-center space-x-4">
+                    <a href="#formulario" class="bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white px-6 lg:px-8 py-3 lg:py-4 rounded-xl font-bold transition-all duration-300 border border-white/30 shadow-lg text-sm lg:text-base">
                         ✨ Cotizar Proyecto
                     </a>
+                </div>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobileMenu" class="lg:hidden hidden bg-white/95 backdrop-blur-lg border-t border-white/20 mt-4 rounded-b-2xl">
+                <div class="px-6 py-4 space-y-3">
+                    <a href="#inicio" class="block text-gray-700 hover:text-purple-600 transition-colors font-medium py-2">Inicio</a>
+                    <a href="#sobre-mi" class="block text-gray-700 hover:text-purple-600 transition-colors font-medium py-2">Sobre Mí</a>
+                    <a href="#servicios" class="block text-gray-700 hover:text-purple-600 transition-colors font-medium py-2">Servicios</a>
+                    <a href="#portafolio" class="block text-gray-700 hover:text-purple-600 transition-colors font-medium py-2">Portafolio</a>
+                    <a href="#contacto" class="block text-gray-700 hover:text-purple-600 transition-colors font-medium py-2">Contacto</a>
+                    <div class="pt-3 border-t border-gray-200">
+                        <a href="#formulario" class="block bg-gradient-to-r from-sky-400 via-purple-500 to-pink-500 text-white px-4 py-3 rounded-xl font-bold text-center">
+                            ✨ Cotizar Proyecto
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </nav>
 
     <!-- Header -->
-    <header id="inicio" class="relative z-10 text-center py-32 px-4 sparkle-container pt-32 min-h-screen flex items-center bg-gradient-to-r from-sky-400 via-purple-500 via-pink-500 to-orange-500">
-        <div class="max-w-4xl mx-auto">
-            <div class="float mb-8 relative">
-                <div class="w-48 h-48 mx-auto rounded-full overflow-hidden magic-glow mb-6 logo-sparkles border-4 border-white/20">
-                    <img src="https://res.cloudinary.com/dh7zke3v6/image/upload/v1756748807/MichiFairy_1_tzjozk.jpg" alt="MichiFairy Logo" class="w-full h-full object-cover" onerror="this.style.display='none';">
+    <header id="inicio" class="relative z-10 text-center py-20 sm:py-32 px-4 sparkle-container pt-24 sm:pt-32 min-h-screen flex items-center bg-gradient-to-r from-sky-400 via-purple-500 via-pink-500 to-orange-500 overflow-hidden">
+        <div class="max-w-4xl mx-auto w-full">
+            <div class="float mb-6 sm:mb-8 relative">
+                <div class="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 mx-auto rounded-full overflow-hidden magic-glow mb-4 sm:mb-6 logo-sparkles border-4 border-white/20">
+                    <img src="https://res.cloudinary.com/dh7zke3v6/image/upload/v1756854709/logo_michistema_ylvqbl.jpg" alt="Michistema Logo" class="w-full h-full object-cover" onerror="this.style.display='none';">
                 </div>
             </div>
             
-            <h1 class="elegant-title text-7xl md:text-8xl mb-12 font-bold text-white" style="text-shadow: 0 0 30px rgba(255,255,255,0.8), 0 0 60px rgba(255,255,255,0.6), 0 0 90px rgba(255,255,255,0.4); filter: drop-shadow(0 8px 32px rgba(0,0,0,0.3)); letter-spacing: 0.1em;">
-                MichiFairy
-            </h1>
             <div class="mb-8">
-                <p class="text-xl md:text-2xl text-white/90 font-light drop-shadow-lg">
-                    Haciendo magia en tu web
+                <h1 class="elegant-title text-5xl md:text-6xl lg:text-7xl mb-4 font-bold text-white" style="text-shadow: 0 0 30px rgba(255,255,255,0.8), 0 0 60px rgba(255,255,255,0.6), 0 0 90px rgba(255,255,255,0.4); filter: drop-shadow(0 8px 32px rgba(0,0,0,0.3)); letter-spacing: 0.1em;">
+                    Nancy Padilla
+                </h1>
+                <p class="text-lg md:text-xl lg:text-2xl text-white/90 font-light drop-shadow-lg">
+                    La mágia del diseño
                 </p>
             </div>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-                <a href="https://wa.me/523521463934" target="_blank" class="inline-block bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white font-bold py-4 px-8 rounded-2xl hover-lift transition-all duration-300 text-lg border border-white/30 shadow-lg">
+            <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mb-6 sm:mb-8 px-4">
+                <a href="https://wa.me/523521463934" target="_blank" class="inline-block bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-2xl hover-lift transition-all duration-300 text-base sm:text-lg border border-white/30 shadow-lg">
                     💬 Contactar por WhatsApp
                 </a>
-                <a href="#formulario" class="inline-block bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white font-bold py-4 px-8 rounded-2xl hover-lift transition-all duration-300 text-lg border border-white/30 shadow-lg">
+                <a href="#formulario" class="inline-block bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-2xl hover-lift transition-all duration-300 text-base sm:text-lg border border-white/30 shadow-lg">
                     📝 Enviar Cotización
                 </a>
             </div>
@@ -399,19 +463,35 @@
         <div class="sparkle" style="top: 30%; right: 20%; animation-delay: 1s;"></div>
         <div class="sparkle" style="top: 60%; left: 10%; animation-delay: 2s;"></div>
         <div class="sparkle" style="top: 70%; right: 15%; animation-delay: 0.5s;"></div>
+        
+        <!-- Decorative butterflies -->
+        <img src="https://res.cloudinary.com/dh7zke3v6/image/upload/v1756758384/mariposa2_eiyhks.png" alt="" class="butterfly small" style="top: 25%; left: 25%; animation-delay: 1s;">
+        <img src="https://res.cloudinary.com/dh7zke3v6/image/upload/v1756758382/mariposa_ihmk2a.png" alt="" class="butterfly" style="top: 40%; right: 30%; animation-delay: 3s;">
+        <img src="https://res.cloudinary.com/dh7zke3v6/image/upload/v1756758384/mariposa2_eiyhks.png" alt="" class="butterfly large" style="top: 65%; left: 20%; animation-delay: 5s;">
+        
+        <!-- Floating decorative elements like footer -->
+        <div class="absolute -top-4 -right-4 w-20 h-20 bg-white/10 rounded-2xl opacity-60 animate-pulse"></div>
+        <div class="absolute top-1/4 -left-6 w-16 h-16 bg-white/20 rounded-full opacity-40 animate-bounce"></div>
+        <div class="absolute bottom-1/3 -right-8 w-24 h-24 bg-white/15 rounded-3xl opacity-50 animate-pulse" style="animation-delay: 1s;"></div>
+        <div class="absolute top-1/3 left-10 w-12 h-12 bg-white/25 rounded-full opacity-30 animate-bounce" style="animation-delay: 2s;"></div>
+        <div class="absolute bottom-1/4 left-1/4 w-18 h-18 bg-white/20 rounded-2xl opacity-45 animate-pulse" style="animation-delay: 0.5s;"></div>
+        <div class="absolute top-2/3 right-1/4 w-14 h-14 bg-white/30 rounded-full opacity-35 animate-bounce" style="animation-delay: 1.5s;"></div>
+        
+        <!-- Floating bubbles container for header -->
+        <div id="headerBubbles" class="absolute inset-0 pointer-events-none overflow-hidden"></div>
     </header>
 
     <!-- Main Content -->
     <main class="relative z-10 max-w-7xl mx-auto px-4 pb-20">
         <!-- Creative Space Section -->
-        <section class="mb-24 py-24 bg-gradient-to-br from-sky-50 via-purple-50 to-pink-50 -mx-4 px-4" style="border-radius: 30px;">
+        <section class="mb-16 sm:mb-24 py-16 sm:py-24 bg-gradient-to-br from-sky-50 via-purple-50 to-pink-50 -mx-4 px-4" style="border-radius: 30px;">
             <div class="max-w-6xl mx-auto">
-                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
                     <div class="order-2 lg:order-1">
-                        <h2 class="elegant-title text-4xl md:text-5xl mb-8 text-gray-800">
+                        <h2 class="elegant-title text-3xl sm:text-4xl md:text-5xl mb-6 sm:mb-8 text-gray-800">
                             Mi Espacio Creativo
                         </h2>
-                        <p class="text-xl text-gray-700 leading-relaxed mb-6 font-light">
+                        <p class="text-lg sm:text-xl text-gray-700 leading-relaxed mb-6 font-light">
                             Cada proyecto nace en un ambiente donde la creatividad fluye libremente. Mi espacio de trabajo está diseñado para inspirar y crear experiencias web únicas.
                         </p>
                         <p class="text-lg text-gray-600 leading-relaxed mb-8 font-light">
@@ -435,7 +515,7 @@
                     
                     <div class="order-1 lg:order-2 relative">
                         <div class="relative overflow-hidden rounded-3xl shadow-2xl">
-                            <img src="https://res.cloudinary.com/dh7zke3v6/image/upload/v1756757014/1_wjuhfs.jpg" 
+                            <img src="https://res.cloudinary.com/dh7zke3v6/image/upload/v1756855344/gatofeliz_yrnyw0.jpg" 
                                  alt="Espacio creativo de Nancy Padilla" 
                                  class="w-full h-96 lg:h-[500px] object-cover"
                                  onerror="this.style.display='none';">
@@ -448,13 +528,21 @@
                         <!-- Floating elements -->
                         <div class="absolute -top-4 -right-4 w-20 h-20 bg-gradient-to-br from-sky-400 to-purple-500 rounded-2xl opacity-20 animate-pulse"></div>
                         <div class="absolute -bottom-6 -left-6 w-16 h-16 bg-gradient-to-br from-pink-400 to-orange-500 rounded-full opacity-30 animate-bounce"></div>
+                        
+                        <!-- Decorative butterflies -->
+                        <img src="https://res.cloudinary.com/dh7zke3v6/image/upload/v1756758382/mariposa_ihmk2a.png" alt="" class="butterfly small" style="top: 10%; right: 10%; animation-delay: 2s;">
+                        <img src="https://res.cloudinary.com/dh7zke3v6/image/upload/v1756758384/mariposa2_eiyhks.png" alt="" class="butterfly" style="bottom: 15%; left: 15%; animation-delay: 4s;">
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Services Section -->
-        <section id="servicios" class="mb-24 bg-gradient-to-br from-sky-50 via-purple-50 to-pink-50 py-24 -mx-4 px-4" style="border-radius: 30px;">
+        <section id="servicios" class="mb-24 bg-gradient-to-br from-sky-50 via-purple-50 to-pink-50 py-24 -mx-4 px-4 relative overflow-hidden" style="border-radius: 30px;">
+            <!-- Decorative butterflies -->
+            <img src="https://res.cloudinary.com/dh7zke3v6/image/upload/v1756758384/mariposa2_eiyhks.png" alt="" class="butterfly" style="top: 20%; right: 10%; animation-delay: 1s;">
+            <img src="https://res.cloudinary.com/dh7zke3v6/image/upload/v1756758382/mariposa_ihmk2a.png" alt="" class="butterfly small" style="bottom: 25%; left: 8%; animation-delay: 6s;">
+            
             <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16">
                 <h2 class="elegant-title text-4xl md:text-5xl mb-6 text-gray-800">
@@ -491,76 +579,54 @@
         </section>
 
         <!-- About Section -->
-        <section id="sobre-mi" class="mb-24 py-32 bg-gradient-to-br from-sky-50 via-purple-50 to-pink-50 -mx-4 px-4" style="border-radius: 30px;">
-            <div class="max-w-7xl mx-auto px-4">
-                <div class="grid lg:grid-cols-2 gap-20 items-center">
-                    <!-- Left Column - Image -->
-                    <div class="order-2 lg:order-1">
-                        <div class="relative">
-                            <div class="aspect-[4/5] overflow-hidden rounded-2xl magic-glow">
-                                <img src="https://res.cloudinary.com/dh7zke3v6/image/upload/v1756579214/nancypadilla_ywxcso.jpg" 
-                                     alt="Nancy Padilla Salazar" 
-                                     class="w-full h-full object-cover"
-                                     onerror="this.style.display='none';">
-                            </div>
-                            <!-- Decorative elements -->
-                            <div class="absolute -top-6 -right-6 w-24 h-24 bg-gradient-to-br from-sky-400 to-purple-500 rounded-2xl opacity-20 -z-10"></div>
-                            <div class="absolute -bottom-6 -left-6 w-32 h-32 bg-gradient-to-br from-pink-400 to-orange-500 rounded-full opacity-15 -z-10"></div>
+        <section id="sobre-mi" class="mb-24 py-16 bg-gradient-to-br from-sky-50 via-purple-50 to-pink-50 -mx-4 px-4" style="border-radius: 30px;">
+            <div class="max-w-3xl mx-auto px-4">
+                <div class="card-gradient p-8 rounded-3xl magic-glow text-center">
+                    <!-- Photo at top -->
+                    <div class="mb-6">
+                        <div class="w-32 h-32 overflow-hidden rounded-full magic-glow border-4 border-white/50 mx-auto">
+                            <img src="https://res.cloudinary.com/dh7zke3v6/image/upload/v1756579214/nancypadilla_ywxcso.jpg" 
+                                 alt="Nancy Padilla" 
+                                 class="w-full h-full object-cover"
+                                 onerror="this.style.display='none';">
                         </div>
                     </div>
                     
-                    <!-- Right Column - Content -->
-                    <div class="order-1 lg:order-2">
-                        <div class="max-w-xl">
-                            <!-- Small title -->
-                            <div class="elegant-subtitle text-gray-500 mb-6 tracking-wider">
-                                DESARROLLADORA WEB
-                            </div>
-                            
-                            <!-- Main title -->
-                            <h2 class="elegant-title text-5xl md:text-6xl mb-8 text-gray-800 leading-tight">
-                                Nancy Padilla
-                                <span class="block text-4xl md:text-5xl text-gray-600 font-light mt-2">Salazar</span>
-                            </h2>
-                            
-                            <!-- Credential -->
-                            <div class="mb-12">
-                                <div class="inline-flex items-center px-4 py-2 card-gradient rounded-full border border-sky-200">
-                                    <div class="w-2 h-2 accent-gradient rounded-full mr-3"></div>
-                                    <span class="text-sm font-medium text-gray-700">Ing. en Sistemas Computacionales</span>
-                                </div>
-                            </div>
-                            
-                            <!-- Description -->
-                            <div class="space-y-6 text-gray-700 leading-relaxed">
-                                <p class="text-lg font-light">
-                                    Amo diseñar, aportar colores a los diseños y hacerlos resaltar ante la competencia con una marca de <em class="text-pink-600 font-medium">novedad e innovación</em>.
-                                </p>
-                                
-                                <p class="text-base">
-                                    Mi pasión es transformar ideas en experiencias web únicas que no solo funcionan perfectamente, sino que también cautivan con diseños coloridos y modernos que conectan con las personas.
-                                </p>
-                                
-                                <p class="text-base">
-                                    Cada proyecto es una oportunidad de crear algo extraordinario, donde la funcionalidad se encuentra con la belleza visual para generar impacto real en el mundo digital.
-                                </p>
-                            </div>
-                            
-                            <!-- Stats or highlights -->
-                            <div class="mt-12 grid grid-cols-3 gap-8">
-                                <div class="text-center lg:text-left">
-                                    <div class="text-2xl font-bold text-sky-600 mb-1">5+</div>
-                                    <div class="text-sm text-gray-500 uppercase tracking-wide">Años de experiencia</div>
-                                </div>
-                                <div class="text-center lg:text-left">
-                                    <div class="text-2xl font-bold text-purple-600 mb-1">100+</div>
-                                    <div class="text-sm text-gray-500 uppercase tracking-wide">Proyectos completados</div>
-                                </div>
-                                <div class="text-center lg:text-left">
-                                    <div class="text-2xl font-bold text-pink-600 mb-1">∞</div>
-                                    <div class="text-sm text-gray-500 uppercase tracking-wide">Creatividad</div>
-                                </div>
-                            </div>
+                    <!-- Content -->
+                    <div class="elegant-subtitle text-gray-500 mb-3 tracking-wider text-sm">
+                        DESARROLLADORA WEB
+                    </div>
+                    
+                    <h2 class="elegant-title text-3xl mb-4 text-gray-800 leading-tight">
+                        Nancy Padilla
+                    </h2>
+                    
+                    <!-- Credential -->
+                    <div class="mb-6 flex justify-center">
+                        <div class="inline-flex items-center px-4 py-2 bg-white/60 rounded-full border border-sky-200">
+                            <div class="w-2 h-2 accent-gradient rounded-full mr-3"></div>
+                            <span class="text-sm font-medium text-gray-700">Ing. en Sistemas Computacionales</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Brief description -->
+                    <p class="text-gray-700 leading-relaxed mb-6 text-base">
+                        Amo diseñar, aportar colores a los diseños y hacerlos resaltar ante la competencia con una marca de <em class="text-pink-600 font-medium">novedad e innovación</em>. Mi pasión es transformar ideas en experiencias web únicas.
+                    </p>
+                    
+                    <!-- Compact stats -->
+                    <div class="grid grid-cols-3 gap-4 max-w-xs mx-auto">
+                        <div class="text-center">
+                            <div class="text-xl font-bold text-sky-600 mb-1">5+</div>
+                            <div class="text-xs text-gray-500 uppercase tracking-wide">Años</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-xl font-bold text-purple-600 mb-1">100+</div>
+                            <div class="text-xs text-gray-500 uppercase tracking-wide">Proyectos</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-xl font-bold text-pink-600 mb-1">∞</div>
+                            <div class="text-xs text-gray-500 uppercase tracking-wide">Creatividad</div>
                         </div>
                     </div>
                 </div>
@@ -568,7 +634,11 @@
         </section>
 
         <!-- Portfolio Section -->
-        <section id="portafolio" class="mb-24 bg-gradient-to-br from-sky-50 via-purple-50 to-pink-50 py-24 -mx-4 px-4" style="border-radius: 30px;">
+        <section id="portafolio" class="mb-24 bg-gradient-to-br from-sky-50 via-purple-50 to-pink-50 py-24 -mx-4 px-4 relative overflow-hidden" style="border-radius: 30px;">
+            <!-- Decorative butterflies -->
+            <img src="https://res.cloudinary.com/dh7zke3v6/image/upload/v1756758382/mariposa_ihmk2a.png" alt="" class="butterfly large" style="top: 15%; left: 5%; animation-delay: 3s;">
+            <img src="https://res.cloudinary.com/dh7zke3v6/image/upload/v1756758384/mariposa2_eiyhks.png" alt="" class="butterfly" style="top: 60%; right: 12%; animation-delay: 7s;">
+            
             <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16">
                 <h2 class="elegant-title text-4xl md:text-5xl mb-6 text-gray-800">
@@ -847,11 +917,11 @@
                 <div class="md:col-span-2">
                     <div class="flex items-center mb-6">
                         <div class="w-16 h-16 rounded-full overflow-hidden mr-4 ring-4 ring-white/30">
-                            <img src="https://res.cloudinary.com/dh7zke3v6/image/upload/v1756748807/MichiFairy_1_tzjozk.jpg" alt="MichiFairy Logo" class="w-full h-full object-cover" onerror="this.style.display='none';">
+                            <img src="https://res.cloudinary.com/dh7zke3v6/image/upload/v1756854709/logo_michistema_ylvqbl.jpg" alt="Michistema Logo" class="w-full h-full object-cover" onerror="this.style.display='none';">
                         </div>
                         <div>
-                            <div class="text-3xl font-bold drop-shadow-lg">MichiFairy</div>
-                            <div class="text-white/80 text-sm">Haciendo magia en tu web</div>
+                            <div class="text-3xl font-bold drop-shadow-lg">Michistema</div>
+                            <div class="text-white/80 text-sm">La mágia del diseño</div>
                         </div>
                     </div>
                     <p class="text-white/90 leading-relaxed mb-6 max-w-md">
@@ -902,7 +972,7 @@
             <!-- Bottom Bar -->
             <div class="border-t border-white/20 pt-8 text-center">
                 <p class="text-white/80">
-                    © 2025 MichiFairy. Todos los derechos reservados. Hecho con ✨ y mucho amor.
+                    © 2025 Michistema. Todos los derechos reservados. Hecho con ✨ y mucho amor.
                 </p>
             </div>
         </div>
@@ -1008,11 +1078,51 @@
             }, 2000);
         }
         
+        // Header bubble system
+        function createHeaderBubble() {
+            const headerBubbles = document.getElementById('headerBubbles');
+            if (!headerBubbles) return;
+            
+            const bubble = document.createElement('div');
+            bubble.className = 'absolute rounded-full pointer-events-none';
+            
+            const size = Math.random() * 40 + 15;
+            bubble.style.width = size + 'px';
+            bubble.style.height = size + 'px';
+            bubble.style.left = Math.random() * 100 + '%';
+            bubble.style.bottom = '-50px';
+            bubble.style.background = `radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.3))`;
+            bubble.style.opacity = Math.random() * 0.7 + 0.3;
+            
+            const duration = Math.random() * 4000 + 3000;
+            const drift = (Math.random() - 0.5) * 200;
+            
+            headerBubbles.appendChild(bubble);
+            
+            // Animate bubble floating up
+            bubble.animate([
+                { 
+                    transform: 'translateY(0px) translateX(0px) scale(1)', 
+                    opacity: bubble.style.opacity 
+                },
+                { 
+                    transform: `translateY(-${window.innerHeight + 100}px) translateX(${drift}px) scale(0.3)`, 
+                    opacity: 0 
+                }
+            ], {
+                duration: duration,
+                easing: 'ease-out'
+            }).onfinish = () => {
+                bubble.remove();
+            };
+        }
+        
         // Create effects periodically
         setInterval(createParticle, 300);
         setInterval(createBubble, 800);
         setInterval(createLightRay, 1500);
         setInterval(createLogoDestello, 400);
+        setInterval(createHeaderBubble, 600);
         
         // Add floating animation with stagger
         const floatElements = document.querySelectorAll('.float, .hover-lift');
@@ -1157,8 +1267,31 @@
         window.addEventListener('scroll', updateProgressBar);
         window.addEventListener('resize', updateProgressBar);
         
+        // Mobile menu functionality
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Close mobile menu when clicking on links
+        document.querySelectorAll('#mobileMenu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+        
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!mobileMenuBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
+                mobileMenu.classList.add('hidden');
+            }
+        });
+        
         // Initial call
         updateProgressBar();
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9787acb673a0f863',t:'MTc1Njc2MDE5MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9790c1fd95e7154d',t:'MTc1Njg1NTQzNC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
+

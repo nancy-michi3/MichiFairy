@@ -90,7 +90,7 @@
             box-shadow: 0 20px 60px rgba(56, 189, 248, 0.25), 0 10px 30px rgba(255, 107, 157, 0.2);
         }
         
-        /* Shimmer effect */
+        /* Shimmer effect - only on hover */
         .shimmer {
             position: relative;
             overflow: hidden;
@@ -104,7 +104,13 @@
             width: 100%;
             height: 100%;
             background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-            animation: shimmer 3s infinite;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .shimmer:hover::before {
+            opacity: 1;
+            animation: shimmer 1.5s ease-out;
         }
         
         @keyframes shimmer {
@@ -417,18 +423,52 @@
             }
         }
         
-        /* Custom scrollbar */
+        /* Custom magical scrollbar */
         ::-webkit-scrollbar {
-            width: 8px;
+            width: 12px;
         }
         
         ::-webkit-scrollbar-track {
-            background: #f1f1f1;
+            background: linear-gradient(180deg, #f8f4ff 0%, #fdf2f8 50%, #f0f9ff 100%);
+            border-radius: 10px;
+            position: relative;
         }
         
         ::-webkit-scrollbar-thumb {
-            background: linear-gradient(135deg, #38bdf8, #ff6b9d, #c44569);
-            border-radius: 4px;
+            background: linear-gradient(135deg, #ec4899, #f97316, #8b5cf6, #06b6d4);
+            border-radius: 10px;
+            border: 2px solid transparent;
+            background-clip: content-box;
+            position: relative;
+            animation: scrollbarGlow 3s ease-in-out infinite;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, #be185d, #ea580c, #7c3aed, #0891b2);
+            box-shadow: 0 0 20px rgba(236, 72, 153, 0.6), 0 0 40px rgba(139, 92, 246, 0.4);
+        }
+        
+        @keyframes scrollbarGlow {
+            0%, 100% {
+                box-shadow: 0 0 10px rgba(236, 72, 153, 0.3), 0 0 20px rgba(139, 92, 246, 0.2);
+            }
+            50% {
+                box-shadow: 0 0 20px rgba(236, 72, 153, 0.6), 0 0 40px rgba(139, 92, 246, 0.4), 0 0 60px rgba(255, 255, 255, 0.3);
+            }
+        }
+        
+        /* Scrollbar sparkle effects */
+        ::-webkit-scrollbar-thumb::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="sparkles" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="5" cy="5" r="1" fill="white" opacity="0.8"><animate attributeName="opacity" values="0.8;0.2;0.8" dur="2s" repeatCount="indefinite"/></circle><circle cx="15" cy="15" r="0.5" fill="white" opacity="0.6"><animate attributeName="opacity" values="0.6;0.1;0.6" dur="1.5s" repeatCount="indefinite"/></circle></pattern></defs><rect width="100" height="100" fill="url(%23sparkles)"/></svg>') repeat;
+            border-radius: 10px;
+            pointer-events: none;
+            opacity: 0.4;
         }
     </style>
 </head>
@@ -584,7 +624,7 @@
                     
                     <div class="order-1 lg:order-2 relative">
                         <div class="relative overflow-hidden rounded-3xl shadow-2xl">
-                            <img src="https://res.cloudinary.com/dh7zke3v6/image/upload/v1756855344/gatofeliz_yrnyw0.jpg" 
+                            <img src="https://res.cloudinary.com/dh7zke3v6/image/upload/v1756921846/gatofeliz_exnrcl.png" 
                                  alt="Espacio creativo de Nancy Padilla" 
                                  class="w-full h-96 lg:h-[500px] object-cover"
                                  onerror="this.style.display='none';">
@@ -621,30 +661,69 @@
             <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16">
                 <h2 class="elegant-title text-4xl md:text-5xl mb-6 text-white drop-shadow-lg">
-                    Nuestros servicios
+                    ¿Qué tipo de página web necesitas?
                 </h2>
-                <p class="text-xl text-white max-w-3xl mx-auto drop-shadow-md font-medium">
-                    Creación de páginas web profesionales que ayudan a resaltar tu marca, atraer clientes y destacar frente a la competencia.
+                <p class="text-xl text-white max-w-4xl mx-auto drop-shadow-md font-medium leading-relaxed">
+                    Desde páginas de contacto profesionales hasta sitios web completos como <span class="text-pink-400 font-bold">esta misma página de Michistema</span> - 
+                    creo experiencias digitales que transforman tu presencia online y atraen más clientes.
                 </p>
             </div>
             
             <div class="grid md:grid-cols-2 gap-12 mb-16">
                 <div class="service-card-colorful bg-gradient-to-br from-pink-400 via-purple-500 to-indigo-600 p-12 rounded-3xl shadow-2xl shimmer hover-lift transform transition-all duration-500 hover:scale-105 hover:shadow-3xl border-4 border-white/20">
                     <div class="w-24 h-24 bg-white/20 backdrop-blur-sm rounded-3xl flex items-center justify-center mb-8 mx-auto border-2 border-white/30 overflow-hidden">
-                        <img src="https://res.cloudinary.com/dh7zke3v6/image/upload/v1756854701/michistema_sin_letras_nfrloz.png" alt="Michistema Logo" class="w-16 h-16 object-contain" onerror="this.style.display='none';">
+                        <img src="https://res.cloudinary.com/dh7zke3v6/image/upload/v1756854701/michistema_sin_letras_nfrloz.png" alt="Páginas de Contacto" class="w-16 h-16 object-contain" onerror="this.style.display='none';">
                     </div>
                     <h3 class="elegant-title text-3xl mb-6 text-center text-white drop-shadow-lg">Páginas de Contacto</h3>
-                    <p class="text-white/90 text-center leading-relaxed text-lg drop-shadow-md font-medium">Páginas web sencillas de contacto para compartir y representar su marca de manera profesional.</p>
+                    <p class="text-white/90 text-center leading-relaxed text-lg drop-shadow-md font-medium mb-6">
+                        Páginas profesionales y atractivas para que tus clientes te encuentren fácilmente. Perfectas para compartir en redes sociales y tarjetas de presentación.
+                    </p>
+                    <div class="text-center">
+                        <div class="inline-flex items-center bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full border border-white/30">
+                            <span class="text-white/90 text-sm font-semibold">💰 Desde $1,500 MXN</span>
+                        </div>
+                    </div>
                 </div>
                 
                 <div class="service-card-colorful bg-gradient-to-br from-cyan-400 via-blue-500 to-purple-600 p-12 rounded-3xl shadow-2xl shimmer hover-lift transform transition-all duration-500 hover:scale-105 hover:shadow-3xl border-4 border-white/20">
                     <div class="w-24 h-24 bg-white/20 backdrop-blur-sm rounded-3xl flex items-center justify-center mb-8 mx-auto border-2 border-white/30 overflow-hidden">
-                        <img src="https://res.cloudinary.com/dh7zke3v6/image/upload/v1756855344/gatofeliz_yrnyw0.jpg" alt="Gato Feliz" class="w-20 h-20 object-cover rounded-2xl" onerror="this.style.display='none';">
+                        <img src="https://res.cloudinary.com/dh7zke3v6/image/upload/v1756921846/gatofeliz_exnrcl.png" alt="Sitios Web Completos" class="w-16 h-16 object-contain" onerror="this.style.display='none';">
                     </div>
-                    <h3 class="elegant-title text-3xl mb-6 text-center text-white drop-shadow-lg">Páginas de Inicio</h3>
-                    <p class="text-white/90 text-center leading-relaxed text-lg drop-shadow-md font-medium">Páginas web de inicio para dar una noción de lo que es su empresa y crear una primera impresión profesional.</p>
+                    <h3 class="elegant-title text-3xl mb-6 text-center text-white drop-shadow-lg">Sitios Web Completos</h3>
+                    <p class="text-white/90 text-center leading-relaxed text-lg drop-shadow-md font-medium mb-6">
+                        Páginas web completas como esta misma de Michistema: con portafolio, servicios, formularios de contacto y diseño profesional que impacta.
+                    </p>
+                    <div class="text-center">
+                        <div class="inline-flex items-center bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full border border-white/30">
+                            <span class="text-white/90 text-sm font-semibold">💰 Desde $3,000 MXN</span>
+                        </div>
+                    </div>
                 </div>
             </div>
+            
+            <!-- Example showcase -->
+            <div class="bg-gradient-to-r from-white/10 to-white/5 backdrop-blur-sm p-8 rounded-3xl border border-white/20 text-center">
+                <h3 class="elegant-title text-2xl mb-4 text-white drop-shadow-lg">
+                    🌟 ¡Esta misma página es un ejemplo de mi trabajo!
+                </h3>
+                <p class="text-white/90 text-lg mb-6 max-w-3xl mx-auto leading-relaxed">
+                    Navegas por una página web creada por mí: diseño moderno, efectos visuales, formularios funcionales, 
+                    portafolio integrado y optimizada para todos los dispositivos. <span class="text-pink-400 font-bold">¡Así podría verse tu proyecto!</span>
+                </p>
+                <div class="flex flex-wrap justify-center gap-4 text-sm">
+                    <div class="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full border border-white/30">
+                        <span class="text-white">✨ Efectos visuales</span>
+                    </div>
+                    <div class="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full border border-white/30">
+                        <span class="text-white">📱 Responsive</span>
+                    </div>
+                    <div class="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full border border-white/30">
+                        <span class="text-white">🎨 Diseño único</span>
+                    </div>
+                    <div class="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full border border-white/30">
+                        <span class="text-white">⚡ Carga rápida</span>
+                    </div>
+                </div>
             </div>
             </div>
         </section>
@@ -652,7 +731,7 @@
         <!-- About Section -->
         <section id="sobre-mi" class="mb-24 py-16 bg-gradient-to-br from-sky-50 via-purple-50 to-pink-50 -mx-4 px-4" style="border-radius: 30px;">
             <div class="max-w-3xl mx-auto px-4">
-                <div class="bg-white p-10 rounded-3xl shadow-2xl border-4 border-transparent bg-clip-padding text-center relative overflow-hidden" style="background-image: linear-gradient(white, white), linear-gradient(45deg, #38bdf8, #a855f7, #ec4899, #f97316); background-origin: border-box; background-clip: content-box, border-box; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.05), 0 0 60px rgba(56, 189, 248, 0.3);"
+                <div class="bg-white p-20 rounded-[4rem] shadow-2xl border-4 border-transparent bg-clip-padding text-center relative overflow-hidden" style="background-image: linear-gradient(white, white), linear-gradient(45deg, #38bdf8, #a855f7, #ec4899, #f97316); background-origin: border-box; background-clip: content-box, border-box; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.05), 0 0 60px rgba(56, 189, 248, 0.3);"
                     <!-- Photo at top -->
                     <div class="mb-6">
                         <div class="w-32 h-32 overflow-hidden rounded-full magic-glow mx-auto relative">
@@ -709,133 +788,170 @@
         </section>
 
         <!-- Portfolio Section -->
-        <section id="portafolio" class="mb-24 bg-gradient-to-br from-sky-50 via-purple-50 to-pink-50 py-24 -mx-4 px-4 relative overflow-hidden" style="border-radius: 30px;">
-            <!-- Decorative butterflies -->
-            <img src="https://res.cloudinary.com/dh7zke3v6/image/upload/v1756758382/mariposa_ihmk2a.png" alt="" class="butterfly large" style="top: 15%; left: 5%; animation-delay: 3s;">
-            <img src="https://res.cloudinary.com/dh7zke3v6/image/upload/v1756758384/mariposa2_eiyhks.png" alt="" class="butterfly" style="top: 60%; right: 12%; animation-delay: 7s;">
+        <section id="portafolio" class="mb-24 bg-gradient-to-br from-gray-900 via-black via-purple-900 to-indigo-900 py-32 -mx-4 px-4 relative overflow-hidden" style="border-radius: 30px;">
+            <!-- Enhanced decorative elements -->
+            <div class="absolute top-10 left-10 w-32 h-32 bg-gradient-to-br from-pink-400 to-purple-500 rounded-full opacity-20 animate-pulse"></div>
+            <div class="absolute bottom-20 right-20 w-24 h-24 bg-gradient-to-br from-blue-400 to-cyan-500 rounded-2xl opacity-30 animate-bounce" style="animation-delay: 1s;"></div>
+            <div class="absolute top-1/3 right-1/4 w-40 h-40 bg-gradient-to-br from-orange-400 to-pink-500 rounded-3xl opacity-15 animate-pulse" style="animation-delay: 2s;"></div>
+            <div class="absolute bottom-1/3 left-1/4 w-28 h-28 bg-gradient-to-br from-purple-400 to-indigo-500 rounded-full opacity-25 animate-bounce" style="animation-delay: 0.5s;"></div>
             
-            <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="elegant-title text-4xl md:text-5xl mb-6 text-gray-800">
+            <!-- Glowing particles -->
+            <div class="absolute top-1/4 left-1/3 w-4 h-4 bg-white rounded-full opacity-60 animate-ping"></div>
+            <div class="absolute bottom-1/4 right-1/3 w-3 h-3 bg-pink-400 rounded-full opacity-80 animate-ping" style="animation-delay: 1s;"></div>
+            <div class="absolute top-2/3 left-1/5 w-2 h-2 bg-blue-400 rounded-full opacity-70 animate-ping" style="animation-delay: 2s;"></div>
+            
+            <!-- Decorative butterflies -->
+            <img src="https://res.cloudinary.com/dh7zke3v6/image/upload/v1756758382/mariposa_ihmk2a.png" alt="" class="butterfly large" style="top: 15%; left: 5%; animation-delay: 3s; filter: brightness(1.5) drop-shadow(0 0 20px rgba(255,255,255,0.5));">
+            <img src="https://res.cloudinary.com/dh7zke3v6/image/upload/v1756758384/mariposa2_eiyhks.png" alt="" class="butterfly" style="top: 60%; right: 12%; animation-delay: 7s; filter: brightness(1.5) drop-shadow(0 0 20px rgba(255,255,255,0.5));">
+            
+            <div class="max-w-7xl mx-auto relative z-10">
+            <div class="text-center mb-20">
+                <div class="inline-block mb-8">
+                    <div class="bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 p-1 rounded-3xl">
+                        <div class="bg-gray-900 px-8 py-4 rounded-3xl">
+                            <span class="text-white font-bold text-lg tracking-wider">✨ PORTAFOLIO DESTACADO ✨</span>
+                        </div>
+                    </div>
+                </div>
+                <h2 class="elegant-title text-5xl md:text-7xl mb-8 text-white drop-shadow-2xl" style="text-shadow: 0 0 30px rgba(255,255,255,0.3), 0 0 60px rgba(147,51,234,0.5), 0 0 90px rgba(236,72,153,0.3);">
                     Trabajos Realizados
                 </h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                    Proyectos reales que han dado gran impacto a cada marca, pensados minuciosamente para resaltar cada negocio y destacar ante la competencia
+                <p class="text-2xl text-white/90 max-w-4xl mx-auto drop-shadow-lg font-medium leading-relaxed">
+                    Proyectos reales que han transformado marcas y generado <span class="text-pink-400 font-bold">impacto extraordinario</span>, 
+                    diseñados para destacar y conquistar mercados
                 </p>
+                
+                <!-- Stats bar -->
+                <div class="flex justify-center items-center space-x-12 mt-12">
+                    <div class="text-center">
+                        <div class="text-4xl font-bold text-pink-400 mb-2 drop-shadow-lg">30+</div>
+                        <div class="text-white/80 text-sm uppercase tracking-wide">Proyectos Exitosos</div>
+                    </div>
+                    <div class="w-px h-12 bg-white/30"></div>
+                    <div class="text-center">
+                        <div class="text-4xl font-bold text-purple-400 mb-2 drop-shadow-lg">100%</div>
+                        <div class="text-white/80 text-sm uppercase tracking-wide">Satisfacción</div>
+                    </div>
+                    <div class="w-px h-12 bg-white/30"></div>
+                    <div class="text-center">
+                        <div class="text-4xl font-bold text-blue-400 mb-2 drop-shadow-lg">5+</div>
+                        <div class="text-white/80 text-sm uppercase tracking-wide">Años Experiencia</div>
+                    </div>
+                </div>
             </div>
             
-            <div class="grid md:grid-cols-2 gap-12">
-                <a href="https://bubblefest.netlify.app/" target="_blank" class="card-gradient p-8 rounded-3xl magic-glow hover:strong-glow hover-lift shimmer group">
+            <div class="grid md:grid-cols-2 gap-16">
+                <a href="https://bubblefest.netlify.app/" target="_blank" class="bg-gradient-to-br from-gray-800 to-gray-900 p-10 rounded-3xl shadow-2xl hover:shadow-purple-500/25 hover-lift shimmer group border border-purple-500/30 relative overflow-hidden">
+                    <!-- Glow effect -->
+                    <div class="absolute inset-0 bg-gradient-to-r from-purple-500/10 via-pink-500/10 to-orange-500/10 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    
                     <!-- Vista previa -->
-                    <div class="h-48 bg-gradient-to-br from-purple-400 via-pink-500 to-orange-400 rounded-2xl mb-6 flex items-center justify-center group-hover:scale-105 transition-transform duration-300 overflow-hidden">
-                        <div class="text-white text-center">
-                            <div class="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mb-4 mx-auto backdrop-blur-sm">
-                                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4V2a1 1 0 011-1h8a1 1 0 011 1v2m-9 0h10m-10 0a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V6a2 2 0 00-2-2"></path>
-                                </svg>
-                            </div>
-                            <div class="text-sm font-semibold">Vista Previa</div>
-                        </div>
+                    <div class="h-56 bg-gradient-to-br from-purple-400 via-pink-500 to-orange-400 rounded-2xl mb-8 group-hover:scale-105 transition-transform duration-300 overflow-hidden shadow-2xl relative z-10">
+                        <img src="https://res.cloudinary.com/dh7zke3v6/image/upload/v1756920527/vp_bubblefest_lpqwqh.png" 
+                             alt="Vista previa de BubbleFest" 
+                             class="w-full h-full object-cover"
+                             onerror="this.style.display='none';">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent"></div>
                     </div>
                     
-                    <div class="flex items-center mb-4">
-                        <span class="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-xs font-semibold mr-3">Festival</span>
-                        <span class="bg-pink-100 text-pink-700 px-3 py-1 rounded-full text-xs font-semibold">Interactivo</span>
+                    <div class="flex items-center mb-6 relative z-10">
+                        <span class="bg-purple-500/20 text-purple-300 px-4 py-2 rounded-full text-sm font-bold mr-3 border border-purple-400/30">Decoración</span>
+                        <span class="bg-pink-500/20 text-pink-300 px-4 py-2 rounded-full text-sm font-bold border border-pink-400/30">Eventos</span>
                     </div>
                     
-                    <h3 class="elegant-title text-2xl mb-3 text-gray-800">BubbleFest</h3>
-                    <p class="text-gray-600 mb-4 leading-relaxed">Festival interactivo con experiencia inmersiva, efectos visuales espectaculares y navegación fluida que cautiva a los visitantes.</p>
+                    <h3 class="elegant-title text-3xl mb-4 text-white drop-shadow-lg relative z-10">BubbleFest</h3>
+                    <p class="text-gray-300 mb-6 leading-relaxed text-lg relative z-10">Empresa especializada en decoración de eventos con novedosos arreglos de globos. Sitio web colorido y festivo que refleja la creatividad de sus servicios.</p>
                     
-                    <div class="flex items-center text-purple-600 font-semibold">
+                    <div class="flex items-center text-purple-400 font-bold text-lg relative z-10">
                         <span>Ver proyecto</span>
-                        <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-5 h-5 ml-2 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                         </svg>
                     </div>
                 </a>
                 
-                <a href="https://disarreyes.netlify.app/" target="_blank" class="card-gradient p-8 rounded-3xl magic-glow hover:strong-glow hover-lift shimmer group">
+                <a href="https://disarreyes.netlify.app/" target="_blank" class="bg-gradient-to-br from-gray-800 to-gray-900 p-10 rounded-3xl shadow-2xl hover:shadow-blue-500/25 hover-lift shimmer group border border-blue-500/30 relative overflow-hidden">
+                    <!-- Glow effect -->
+                    <div class="absolute inset-0 bg-gradient-to-r from-blue-500/10 via-indigo-500/10 to-purple-500/10 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    
                     <!-- Vista previa -->
-                    <div class="h-48 bg-gradient-to-br from-blue-500 via-indigo-600 to-purple-600 rounded-2xl mb-6 flex items-center justify-center group-hover:scale-105 transition-transform duration-300 overflow-hidden">
-                        <div class="text-white text-center">
-                            <div class="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mb-4 mx-auto backdrop-blur-sm">
-                                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
-                                </svg>
-                            </div>
-                            <div class="text-sm font-semibold">Vista Previa</div>
-                        </div>
+                    <div class="h-56 bg-gradient-to-br from-blue-500 via-indigo-600 to-purple-600 rounded-2xl mb-8 group-hover:scale-105 transition-transform duration-300 overflow-hidden shadow-2xl relative z-10">
+                        <img src="https://res.cloudinary.com/dh7zke3v6/image/upload/v1756920527/vp_disar_arb5qs.png" 
+                             alt="Vista previa de Disar Reyes" 
+                             class="w-full h-full object-cover"
+                             onerror="this.style.display='none';">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent"></div>
                     </div>
                     
-                    <div class="flex items-center mb-4">
-                        <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-semibold mr-3">Elegante</span>
-                        <span class="bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full text-xs font-semibold">Sofisticado</span>
+                    <div class="flex items-center mb-6 relative z-10">
+                        <span class="bg-blue-500/20 text-blue-300 px-4 py-2 rounded-full text-sm font-bold mr-3 border border-blue-400/30">Constructora</span>
+                        <span class="bg-indigo-500/20 text-indigo-300 px-4 py-2 rounded-full text-sm font-bold border border-indigo-400/30">Profesional</span>
                     </div>
                     
-                    <h3 class="elegant-title text-2xl mb-3 text-gray-800">Disar Reyes</h3>
-                    <p class="text-gray-600 mb-4 leading-relaxed">Sitio web elegante y sofisticado con diseño minimalista, tipografía cuidada y experiencia de usuario excepcional.</p>
+                    <h3 class="elegant-title text-3xl mb-4 text-white drop-shadow-lg relative z-10">Disar Reyes</h3>
+                    <p class="text-gray-300 mb-6 leading-relaxed text-lg relative z-10">Constructora especializada en casas, oficinas y bodegas. Sitio web profesional que transmite confianza y solidez en cada proyecto de construcción.</p>
                     
-                    <div class="flex items-center text-blue-600 font-semibold">
+                    <div class="flex items-center text-blue-400 font-bold text-lg relative z-10">
                         <span>Ver proyecto</span>
-                        <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-5 h-5 ml-2 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                         </svg>
                     </div>
                 </a>
                 
-                <a href="https://karseb.netlify.app/" target="_blank" class="card-gradient p-8 rounded-3xl magic-glow hover:strong-glow hover-lift shimmer group">
+                <a href="https://karseb.netlify.app/" target="_blank" class="bg-gradient-to-br from-gray-800 to-gray-900 p-10 rounded-3xl shadow-2xl hover:shadow-green-500/25 hover-lift shimmer group border border-green-500/30 relative overflow-hidden">
+                    <!-- Glow effect -->
+                    <div class="absolute inset-0 bg-gradient-to-r from-green-500/10 via-teal-500/10 to-blue-500/10 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    
                     <!-- Vista previa -->
-                    <div class="h-48 bg-gradient-to-br from-green-500 via-teal-600 to-blue-600 rounded-2xl mb-6 flex items-center justify-center group-hover:scale-105 transition-transform duration-300 overflow-hidden">
-                        <div class="text-white text-center">
-                            <div class="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mb-4 mx-auto backdrop-blur-sm">
-                                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                                </svg>
-                            </div>
-                            <div class="text-sm font-semibold">Vista Previa</div>
-                        </div>
+                    <div class="h-56 bg-gradient-to-br from-green-500 via-teal-600 to-blue-600 rounded-2xl mb-8 group-hover:scale-105 transition-transform duration-300 overflow-hidden shadow-2xl relative z-10">
+                        <img src="https://res.cloudinary.com/dh7zke3v6/image/upload/v1756920527/vp_karseb_cujjxy.png" 
+                             alt="Vista previa de KarSeb" 
+                             class="w-full h-full object-cover"
+                             onerror="this.style.display='none';">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent"></div>
                     </div>
                     
-                    <div class="flex items-center mb-4">
-                        <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-semibold mr-3">Automotriz</span>
-                        <span class="bg-teal-100 text-teal-700 px-3 py-1 rounded-full text-xs font-semibold">Innovador</span>
+                    <div class="flex items-center mb-6 relative z-10">
+                        <span class="bg-green-500/20 text-green-300 px-4 py-2 rounded-full text-sm font-bold mr-3 border border-green-400/30">Inmobiliaria</span>
+                        <span class="bg-teal-500/20 text-teal-300 px-4 py-2 rounded-full text-sm font-bold border border-teal-400/30">Innovador</span>
                     </div>
                     
-                    <h3 class="elegant-title text-2xl mb-3 text-gray-800">KarSeb</h3>
-                    <p class="text-gray-600 mb-4 leading-relaxed">Plataforma automotriz innovadora con funcionalidades avanzadas, diseño moderno y experiencia optimizada para el sector.</p>
+                    <h3 class="elegant-title text-3xl mb-4 text-white drop-shadow-lg relative z-10">KarSeb</h3>
+                    <p class="text-gray-300 mb-6 leading-relaxed text-lg relative z-10">Inmobiliaria especializada en venta, renta y asesoría de casas, departamentos, oficinas, locales y bodegas. Plataforma moderna y funcional.</p>
                     
-                    <div class="flex items-center text-green-600 font-semibold">
+                    <div class="flex items-center text-green-400 font-bold text-lg relative z-10">
                         <span>Ver proyecto</span>
-                        <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-5 h-5 ml-2 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                         </svg>
                     </div>
                 </a>
                 
-                <a href="https://casaparaancianosjosemariacabadas.org/" target="_blank" class="card-gradient p-8 rounded-3xl magic-glow hover:strong-glow hover-lift shimmer group">
+                <a href="https://casaparaancianosjosemariacabadas.org/" target="_blank" class="bg-gradient-to-br from-gray-800 to-gray-900 p-10 rounded-3xl shadow-2xl hover:shadow-orange-500/25 hover-lift shimmer group border border-orange-500/30 relative overflow-hidden">
+                    <!-- Glow effect -->
+                    <div class="absolute inset-0 bg-gradient-to-r from-orange-500/10 via-red-500/10 to-pink-500/10 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    
                     <!-- Vista previa -->
-                    <div class="h-48 bg-gradient-to-br from-orange-500 via-red-500 to-pink-600 rounded-2xl mb-6 flex items-center justify-center group-hover:scale-105 transition-transform duration-300 overflow-hidden">
-                        <div class="text-white text-center">
-                            <div class="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mb-4 mx-auto backdrop-blur-sm">
-                                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
-                                </svg>
-                            </div>
-                            <div class="text-sm font-semibold">Vista Previa</div>
-                        </div>
+                    <div class="h-56 bg-gradient-to-br from-orange-500 via-red-500 to-pink-600 rounded-2xl mb-8 group-hover:scale-105 transition-transform duration-300 overflow-hidden shadow-2xl relative z-10">
+                        <img src="https://res.cloudinary.com/dh7zke3v6/image/upload/v1756920527/vp_casa_ancianos_at9mji.png" 
+                             alt="Vista previa de Casa José María" 
+                             class="w-full h-full object-cover"
+                             onerror="this.style.display='none';">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent"></div>
                     </div>
                     
-                    <div class="flex items-center mb-4">
-                        <span class="bg-orange-100 text-orange-700 px-3 py-1 rounded-full text-xs font-semibold mr-3">Institucional</span>
-                        <span class="bg-red-100 text-red-700 px-3 py-1 rounded-full text-xs font-semibold">Completo</span>
+                    <div class="flex items-center mb-6 relative z-10">
+                        <span class="bg-orange-500/20 text-orange-300 px-4 py-2 rounded-full text-sm font-bold mr-3 border border-orange-400/30">Cuidado</span>
+                        <span class="bg-red-500/20 text-red-300 px-4 py-2 rounded-full text-sm font-bold border border-red-400/30">Geriátrico</span>
                     </div>
                     
-                    <h3 class="elegant-title text-2xl mb-3 text-gray-800">Casa José María</h3>
-                    <p class="text-gray-600 mb-4 leading-relaxed">Sitio institucional completo con información detallada, galería de imágenes y sistema de contacto profesional.</p>
+                    <h3 class="elegant-title text-3xl mb-4 text-white drop-shadow-lg relative z-10">Casa José María</h3>
+                    <p class="text-gray-300 mb-6 leading-relaxed text-lg relative z-10">Casa para ancianos (asilo) con sitio web institucional que brinda información completa sobre servicios de cuidado y atención geriátrica.</p>
                     
-                    <div class="flex items-center text-orange-600 font-semibold">
+                    <div class="flex items-center text-orange-400 font-bold text-lg relative z-10">
                         <span>Ver proyecto</span>
-                        <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-5 h-5 ml-2 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                         </svg>
                     </div>
@@ -905,7 +1021,7 @@
                             </svg>
                         </div>
                         <h3 class="text-white font-bold text-lg mb-2 drop-shadow-md">Facebook</h3>
-                        <p class="text-white/80 text-sm drop-shadow-sm">Proyectos y tips</p>
+                        <p class="text-white/80 text-sm drop-shadow-sm">Mis trabajos</p>
                     </a>
                     
                     <!-- TikTok -->
@@ -916,18 +1032,18 @@
                             </svg>
                         </div>
                         <h3 class="text-white font-bold text-lg mb-2 drop-shadow-md">TikTok</h3>
-                        <p class="text-white/80 text-sm drop-shadow-sm">Tutoriales rápidos</p>
+                        <p class="text-white/80 text-sm drop-shadow-sm">Mis trabajos y diseños</p>
                     </a>
                     
                     <!-- Instagram -->
                     <a href="https://www.instagram.com/michistema?igsh=MWhjbjNjdGtoazFsZA==" target="_blank" class="bg-white/20 backdrop-blur-sm hover:bg-white/30 p-8 rounded-3xl transition-all duration-300 hover:scale-105 hover:shadow-2xl border-2 border-white/30 group">
                         <div class="w-16 h-16 bg-gradient-to-br from-purple-500 via-pink-500 to-orange-500 rounded-2xl flex items-center justify-center mb-4 mx-auto group-hover:scale-110 transition-transform">
                             <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 6.62 5.367 11.987 11.988 11.987s11.987-5.367 11.987-11.987C24.004 5.367 18.637.001 12.017.001zM8.449 16.988c-1.297 0-2.448-.49-3.323-1.297C4.198 14.895 3.708 13.744 3.708 12.447s.49-2.448 1.418-3.323c.875-.807 2.026-1.297 3.323-1.297s2.448.49 3.323 1.297c.928.875 1.418 2.026 1.418 3.323s-.49 2.448-1.418 3.244c-.875.807-2.026 1.297-3.323 1.297zm7.83-9.756c-.315 0-.595-.122-.807-.315-.21-.21-.315-.49-.315-.807 0-.315.105-.595.315-.807.21-.21.49-.315.807-.315.315 0 .595.105.807.315.21.21.315.49.315.807 0 .315-.105.595-.315.807-.21.193-.49.315-.807.315zm-3.832 9.034c-2.309 0-4.184-1.875-4.184-4.184s1.875-4.184 4.184-4.184 4.184 1.875 4.184 4.184-1.875 4.184-4.184 4.184z"/>
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
                             </svg>
                         </div>
                         <h3 class="text-white font-bold text-lg mb-2 drop-shadow-md">Instagram</h3>
-                        <p class="text-white/80 text-sm drop-shadow-sm">Proceso creativo</p>
+                        <p class="text-white/80 text-sm drop-shadow-sm">Mis trabajos</p>
                     </a>
                 </div>
                 
@@ -942,8 +1058,8 @@
                         </div>
                         <div class="text-center">
                             <div class="text-3xl mb-2">💡</div>
-                            <h4 class="font-semibold mb-2 drop-shadow-md">Tips de Diseño</h4>
-                            <p class="text-sm drop-shadow-sm">Aprende trucos y técnicas para mejorar tus propios proyectos</p>
+                            <h4 class="font-semibold mb-2 drop-shadow-md">Proceso Creativo</h4>
+                            <p class="text-sm drop-shadow-sm">Conoce mi manera de diseñar y el proceso detrás de cada proyecto</p>
                         </div>
                         <div class="text-center">
                             <div class="text-3xl mb-2">🎁</div>
@@ -1140,7 +1256,7 @@
                         </a>
                         <a href="https://www.instagram.com/michistema?igsh=MWhjbjNjdGtoazFsZA==" target="_blank" class="bg-white/20 hover:bg-white/30 p-3 rounded-xl transition-all duration-300 backdrop-blur-sm">
                             <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 6.62 5.367 11.987 11.988 11.987s11.987-5.367 11.987-11.987C24.004 5.367 18.637.001 12.017.001zM8.449 16.988c-1.297 0-2.448-.49-3.323-1.297C4.198 14.895 3.708 13.744 3.708 12.447s.49-2.448 1.418-3.323c.875-.807 2.026-1.297 3.323-1.297s2.448.49 3.323 1.297c.928.875 1.418 2.026 1.418 3.323s-.49 2.448-1.418 3.244c-.875.807-2.026 1.297-3.323 1.297zm7.83-9.756c-.315 0-.595-.122-.807-.315-.21-.21-.315-.49-.315-.807 0-.315.105-.595.315-.807.21-.21.49-.315.807-.315.315 0 .595.105.807.315.21.21.315.49.315.807 0 .315-.105.595-.315.807-.21.193-.49.315-.807.315zm-3.832 9.034c-2.309 0-4.184-1.875-4.184-4.184s1.875-4.184 4.184-4.184 4.184 1.875 4.184 4.184-1.875 4.184-4.184 4.184z"/>
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
                             </svg>
                         </a>
                     </div>
@@ -1502,6 +1618,5 @@
         // Initial call
         updateProgressBar();
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9796dcd0333a154d',t:'MTc1NjkxOTQ0Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'979720d1321e154d',t:'MTc1NjkyMjIzMi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
-

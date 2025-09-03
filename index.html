@@ -470,6 +470,51 @@
             pointer-events: none;
             opacity: 0.4;
         }
+        
+        /* Bubble explosion effect for CTA buttons */
+        .bubble-explosion {
+            position: relative;
+            overflow: visible;
+        }
+        
+        .bubble-explosion-particle {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 1000;
+            animation: bubbleExplosion 1.2s ease-out forwards;
+        }
+        
+        @keyframes bubbleExplosion {
+            0% {
+                opacity: 1;
+                transform: scale(0) translate(0, 0);
+            }
+            20% {
+                opacity: 1;
+                transform: scale(1) translate(var(--dx), var(--dy));
+            }
+            100% {
+                opacity: 0;
+                transform: scale(0.3) translate(calc(var(--dx) * 2), calc(var(--dy) * 2));
+            }
+        }
+        
+        /* Excitement pulse effect */
+        .excitement-pulse {
+            animation: excitementPulse 0.6s ease-in-out infinite alternate;
+        }
+        
+        @keyframes excitementPulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 20px rgba(56, 189, 248, 0.4), 0 0 40px rgba(255, 107, 157, 0.3);
+            }
+            100% {
+                transform: scale(1.05);
+                box-shadow: 0 0 30px rgba(56, 189, 248, 0.6), 0 0 60px rgba(255, 107, 157, 0.5), 0 0 80px rgba(196, 69, 105, 0.3);
+            }
+        }
     </style>
 </head>
 <body class="bg-white min-h-screen text-gray-800 overflow-x-hidden">
@@ -515,7 +560,7 @@
                 
                 <!-- CTA Button -->
                 <div class="hidden lg:flex items-center space-x-4">
-                    <a href="#formulario" class="bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white px-6 lg:px-8 py-3 lg:py-4 rounded-xl font-bold transition-all duration-300 border border-white/30 shadow-lg text-sm lg:text-base">
+                    <a href="#formulario" class="bubble-explosion bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white px-6 lg:px-8 py-3 lg:py-4 rounded-xl font-bold transition-all duration-300 border border-white/30 shadow-lg text-sm lg:text-base">
                         ✨ Cotizar Proyecto
                     </a>
                 </div>
@@ -530,7 +575,7 @@
                     <a href="#portafolio" class="block text-gray-700 hover:text-purple-600 transition-colors font-medium py-2">Portafolio</a>
                     <a href="#contacto" class="block text-gray-700 hover:text-purple-600 transition-colors font-medium py-2">Contacto</a>
                     <div class="pt-3 border-t border-gray-200">
-                        <a href="#formulario" class="block bg-gradient-to-r from-sky-400 via-purple-500 to-pink-500 text-white px-4 py-3 rounded-xl font-bold text-center">
+                        <a href="#formulario" class="bubble-explosion block bg-gradient-to-r from-sky-400 via-purple-500 to-pink-500 text-white px-4 py-3 rounded-xl font-bold text-center">
                             ✨ Cotizar Proyecto
                         </a>
                     </div>
@@ -557,10 +602,10 @@
                 </p>
             </div>
             <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mb-6 sm:mb-8 px-4">
-                <a href="https://wa.me/523521463934" target="_blank" class="inline-block bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-2xl hover-lift transition-all duration-300 text-base sm:text-lg border border-white/30 shadow-lg">
+                <a href="https://wa.me/523521463934" target="_blank" class="bubble-explosion inline-block bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-2xl hover-lift transition-all duration-300 text-base sm:text-lg border border-white/30 shadow-lg">
                     💬 Contactar por WhatsApp
                 </a>
-                <a href="#formulario" class="inline-block bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-2xl hover-lift transition-all duration-300 text-base sm:text-lg border border-white/30 shadow-lg">
+                <a href="#formulario" class="bubble-explosion inline-block bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-2xl hover-lift transition-all duration-300 text-base sm:text-lg border border-white/30 shadow-lg">
                     📝 Enviar Cotización
                 </a>
             </div>
@@ -729,61 +774,175 @@
         </section>
 
         <!-- About Section -->
-        <section id="sobre-mi" class="mb-24 py-16 bg-gradient-to-br from-sky-50 via-purple-50 to-pink-50 -mx-4 px-4" style="border-radius: 30px;">
-            <div class="max-w-3xl mx-auto px-4">
-                <div class="bg-white p-20 rounded-[4rem] shadow-2xl border-4 border-transparent bg-clip-padding text-center relative overflow-hidden" style="background-image: linear-gradient(white, white), linear-gradient(45deg, #38bdf8, #a855f7, #ec4899, #f97316); background-origin: border-box; background-clip: content-box, border-box; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.05), 0 0 60px rgba(56, 189, 248, 0.3);"
-                    <!-- Photo at top -->
-                    <div class="mb-6">
-                        <div class="w-32 h-32 overflow-hidden rounded-full magic-glow mx-auto relative">
-                            <div class="absolute inset-0 rounded-full bg-gradient-to-r from-sky-400 via-purple-500 via-pink-500 to-orange-500 p-1">
-                                <div class="w-full h-full rounded-full overflow-hidden bg-white">
-                                    <img src="https://res.cloudinary.com/dh7zke3v6/image/upload/v1756579214/nancypadilla_ywxcso.jpg" 
-                                         alt="Nancy Padilla" 
-                                         class="w-full h-full object-cover"
-                                         onerror="this.style.display='none';">
-                                </div>
+        <section id="sobre-mi" class="mb-24 bg-gradient-to-br from-sky-50 via-purple-50 to-pink-50 py-24 -mx-4 px-4" style="border-radius: 30px;">
+            <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="elegant-title text-4xl md:text-5xl mb-6 text-gray-800">
+                    Conoce a la Desarrolladora
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    La mente creativa detrás de cada proyecto web único y funcional
+                </p>
+            </div>
+            
+            <!-- Main Profile Card -->
+            <div class="card-gradient p-12 rounded-3xl magic-glow mb-16">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <!-- Photo and Basic Info -->
+                    <div class="text-center lg:text-left">
+                        <div class="w-64 h-64 rounded-3xl overflow-hidden magic-glow float mx-auto lg:mx-0 mb-8">
+                            <img src="https://res.cloudinary.com/dh7zke3v6/image/upload/v1756579214/nancypadilla_ywxcso.jpg" alt="Nancy Padilla" class="w-full h-full object-cover" onerror="this.style.display='none';">
+                        </div>
+                        
+                        <h3 class="elegant-title text-4xl mb-3 text-gray-800">
+                            Nancy Padilla Salazar
+                        </h3>
+                        <div class="text-xl font-semibold mb-2" style="background: linear-gradient(135deg, #38bdf8 0%, #ff6b9d 50%, #c44569 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">
+                            Desarrolladora y Diseñadora Web
+                        </div>
+                        <div class="text-lg text-gray-600 mb-6">Ing. en Sistemas Computacionales</div>
+                        
+                        <!-- Contact Button -->
+                        <a href="https://wa.me/523521463934" target="_blank" class="inline-flex items-center bg-gradient-to-r from-sky-400 via-purple-500 to-pink-500 text-white px-8 py-4 rounded-2xl font-semibold hover:scale-105 transition-all duration-300 shadow-lg">
+                            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+                            </svg>
+                            Contactar
+                        </a>
+                    </div>
+                    
+                    <!-- Description and Stats -->
+                    <div>
+                        <div class="mb-8">
+                            <h4 class="text-2xl font-bold text-gray-800 mb-4">Mi Filosofía de Diseño</h4>
+                            <p class="text-gray-700 leading-relaxed text-lg mb-6">
+                                Creo en el poder del diseño para transformar ideas en experiencias digitales extraordinarias. 
+                                Cada proyecto es una oportunidad de crear algo único que no solo se vea increíble, 
+                                sino que también funcione perfectamente y genere resultados reales para mis clientes.
+                            </p>
+                            <p class="text-gray-700 leading-relaxed text-lg">
+                                Mi enfoque combina creatividad visual con funcionalidad técnica, 
+                                asegurando que cada sitio web sea una herramienta poderosa para el crecimiento del negocio.
+                            </p>
+                        </div>
+                        
+                        <!-- Stats Grid -->
+                        <div class="grid grid-cols-3 gap-6">
+                            <div class="text-center p-6 bg-gradient-to-br from-sky-100 to-sky-200 rounded-2xl">
+                                <div class="text-3xl font-bold mb-2" style="background: linear-gradient(135deg, #38bdf8 0%, #0891b2 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">5+</div>
+                                <div class="text-sm text-gray-600 font-semibold">Años de Experiencia</div>
+                            </div>
+                            <div class="text-center p-6 bg-gradient-to-br from-purple-100 to-purple-200 rounded-2xl">
+                                <div class="text-3xl font-bold mb-2" style="background: linear-gradient(135deg, #a855f7 0%, #7c3aed 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">30+</div>
+                                <div class="text-sm text-gray-600 font-semibold">Proyectos Completados</div>
+                            </div>
+                            <div class="text-center p-6 bg-gradient-to-br from-pink-100 to-pink-200 rounded-2xl">
+                                <div class="text-3xl font-bold mb-2" style="background: linear-gradient(135deg, #ec4899 0%, #be185d 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">100%</div>
+                                <div class="text-sm text-gray-600 font-semibold">Clientes Satisfechos</div>
                             </div>
                         </div>
                     </div>
-                    
-                    <!-- Content -->
-                    <h2 class="elegant-title text-2xl mb-3 text-gray-800 leading-tight">
-                        Nancy Padilla
-                    </h2>
-                    
-                    <div class="elegant-subtitle mb-3 tracking-wider text-sm bg-gradient-to-r from-sky-400 via-purple-500 via-pink-500 to-orange-500 bg-clip-text text-transparent font-bold">
-                        DESARROLLADORA Y DISEÑADORA WEB
-                    </div>
-                    
-                    <!-- Credential -->
-                    <div class="mb-6 flex justify-center">
-                        <div class="inline-flex items-center px-4 py-2 bg-white/60 rounded-full border border-sky-200">
-                            <div class="w-2 h-2 accent-gradient rounded-full mr-3"></div>
-                            <span class="text-sm font-medium text-gray-700">Ing. en Sistemas Computacionales</span>
+                </div>
+            </div>
+            
+            <!-- Skills and Expertise -->
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- Technical Skills -->
+                <div class="card-gradient p-8 rounded-3xl magic-glow">
+                    <h4 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+                        <div class="w-8 h-8 bg-gradient-to-r from-sky-400 to-purple-500 rounded-lg mr-3 flex items-center justify-center">
+                            <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                            </svg>
                         </div>
-                    </div>
-                    
-                    <!-- Brief description -->
-                    <p class="text-gray-700 leading-relaxed mb-6 text-base">
-                        Especialista en desarrollo de páginas web modernas e innovadoras, con experiencia en diseño, UX/UI y creación de páginas de contacto. Ayudo a marcas a presentar sus servicios y captar clientes de manera <em class="text-pink-600 font-medium">profesional y atractiva</em>.
-                    </p>
-                    
-                    <!-- Compact stats -->
-                    <div class="grid grid-cols-3 gap-4 max-w-xs mx-auto">
-                        <div class="text-center">
-                            <div class="text-xl font-bold text-sky-600 mb-1">5+</div>
-                            <div class="text-xs text-gray-500 uppercase tracking-wide">Años</div>
+                        Habilidades Técnicas
+                    </h4>
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-700 font-medium">Desarrollo Web Frontend</span>
+                            <div class="flex space-x-1">
+                                <div class="w-3 h-3 bg-gradient-to-r from-sky-400 to-purple-500 rounded-full"></div>
+                                <div class="w-3 h-3 bg-gradient-to-r from-sky-400 to-purple-500 rounded-full"></div>
+                                <div class="w-3 h-3 bg-gradient-to-r from-sky-400 to-purple-500 rounded-full"></div>
+                                <div class="w-3 h-3 bg-gradient-to-r from-sky-400 to-purple-500 rounded-full"></div>
+                                <div class="w-3 h-3 bg-gradient-to-r from-sky-400 to-purple-500 rounded-full"></div>
+                            </div>
                         </div>
-                        <div class="text-center">
-                            <div class="text-xl font-bold text-purple-600 mb-1">30+</div>
-                            <div class="text-xs text-gray-500 uppercase tracking-wide">Proyectos</div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-700 font-medium">Diseño UX/UI</span>
+                            <div class="flex space-x-1">
+                                <div class="w-3 h-3 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full"></div>
+                                <div class="w-3 h-3 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full"></div>
+                                <div class="w-3 h-3 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full"></div>
+                                <div class="w-3 h-3 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full"></div>
+                                <div class="w-3 h-3 bg-gray-300 rounded-full"></div>
+                            </div>
                         </div>
-                        <div class="text-center">
-                            <div class="text-xl font-bold text-pink-600 mb-1">∞</div>
-                            <div class="text-xs text-gray-500 uppercase tracking-wide">Creatividad</div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-700 font-medium">Diseño Responsivo</span>
+                            <div class="flex space-x-1">
+                                <div class="w-3 h-3 bg-gradient-to-r from-pink-500 to-orange-500 rounded-full"></div>
+                                <div class="w-3 h-3 bg-gradient-to-r from-pink-500 to-orange-500 rounded-full"></div>
+                                <div class="w-3 h-3 bg-gradient-to-r from-pink-500 to-orange-500 rounded-full"></div>
+                                <div class="w-3 h-3 bg-gradient-to-r from-pink-500 to-orange-500 rounded-full"></div>
+                                <div class="w-3 h-3 bg-gradient-to-r from-pink-500 to-orange-500 rounded-full"></div>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-700 font-medium">Optimización Web</span>
+                            <div class="flex space-x-1">
+                                <div class="w-3 h-3 bg-gradient-to-r from-sky-400 to-purple-500 rounded-full"></div>
+                                <div class="w-3 h-3 bg-gradient-to-r from-sky-400 to-purple-500 rounded-full"></div>
+                                <div class="w-3 h-3 bg-gradient-to-r from-sky-400 to-purple-500 rounded-full"></div>
+                                <div class="w-3 h-3 bg-gradient-to-r from-sky-400 to-purple-500 rounded-full"></div>
+                                <div class="w-3 h-3 bg-gray-300 rounded-full"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
+                
+                <!-- Specializations -->
+                <div class="card-gradient p-8 rounded-3xl magic-glow">
+                    <h4 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+                        <div class="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg mr-3 flex items-center justify-center">
+                            <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                            </svg>
+                        </div>
+                        Especializaciones
+                    </h4>
+                    <div class="space-y-4">
+                        <div class="flex items-start space-x-3">
+                            <div class="w-2 h-2 bg-gradient-to-r from-sky-400 to-purple-500 rounded-full mt-2 flex-shrink-0"></div>
+                            <div>
+                                <h5 class="font-semibold text-gray-800">Páginas de Contacto Profesionales</h5>
+                                <p class="text-gray-600 text-sm">Diseños atractivos que convierten visitantes en clientes</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div class="w-2 h-2 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full mt-2 flex-shrink-0"></div>
+                            <div>
+                                <h5 class="font-semibold text-gray-800">Sitios Web Corporativos</h5>
+                                <p class="text-gray-600 text-sm">Presencia digital sólida para empresas y marcas</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div class="w-2 h-2 bg-gradient-to-r from-pink-500 to-orange-500 rounded-full mt-2 flex-shrink-0"></div>
+                            <div>
+                                <h5 class="font-semibold text-gray-800">Landing Pages Efectivas</h5>
+                                <p class="text-gray-600 text-sm">Páginas optimizadas para conversión y resultados</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div class="w-2 h-2 bg-gradient-to-r from-sky-400 to-purple-500 rounded-full mt-2 flex-shrink-0"></div>
+                            <div>
+                                <h5 class="font-semibold text-gray-800">Portafolios Creativos</h5>
+                                <p class="text-gray-600 text-sm">Showcases únicos que destacan el trabajo profesional</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             </div>
         </section>
 
@@ -847,7 +1006,7 @@
                     
                     <!-- Vista previa -->
                     <div class="h-56 bg-gradient-to-br from-purple-400 via-pink-500 to-orange-400 rounded-2xl mb-8 group-hover:scale-105 transition-transform duration-300 overflow-hidden shadow-2xl relative z-10">
-                        <img src="https://res.cloudinary.com/dh7zke3v6/image/upload/v1756920527/vp_bubblefest_lpqwqh.png" 
+                        <img src="https://res.cloudinary.com/dh7zke3v6/image/upload/v1756921554/vp_bubblefest_oguyic.png" 
                              alt="Vista previa de BubbleFest" 
                              class="w-full h-full object-cover"
                              onerror="this.style.display='none';">
@@ -971,7 +1130,7 @@
                     <p class="text-xl mb-8 text-gray-600 leading-relaxed">
                         Ofrezco soluciones web personalizadas que transforman tu presencia digital y atraen clientes de manera profesional y efectiva.
                     </p>
-                    <div class="inline-block px-8 py-4 bg-gradient-to-r from-sky-400 via-pink-500 via-purple-500 to-pink-600 text-white font-semibold rounded-2xl text-xl">
+                    <div class="bubble-explosion inline-block px-8 py-4 bg-gradient-to-r from-sky-400 via-pink-500 via-purple-500 to-pink-600 text-white font-semibold rounded-2xl text-xl cursor-pointer">
                         ¡Cotiza conmigo!
                     </div>
                 </div>
@@ -1090,7 +1249,7 @@
                     </svg>
                 </div>
                 <p class="text-lg mb-6 text-gray-700">¡Hablemos por WhatsApp!</p>
-                <a href="https://wa.me/523521463934" target="_blank" class="inline-block bg-gradient-to-r from-sky-400 via-pink-500 via-purple-500 to-pink-600 text-white font-semibold py-4 px-8 rounded-2xl hover-lift strong-glow transition-all duration-300">
+                <a href="https://wa.me/523521463934" target="_blank" class="bubble-explosion inline-block bg-gradient-to-r from-sky-400 via-pink-500 via-purple-500 to-pink-600 text-white font-semibold py-4 px-8 rounded-2xl hover-lift strong-glow transition-all duration-300">
                     Enviar mensaje
                 </a>
                 <p class="text-sm mt-4 text-gray-500 font-mono">3521463934</p>
@@ -1526,6 +1685,86 @@
             });
         });
         
+        // Bubble explosion effect for CTA buttons
+        function createBubbleExplosion(button, event) {
+            const rect = button.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            
+            // Create many bubbles with different colors and sizes
+            const colors = [
+                'rgba(56, 189, 248, 0.8)',   // sky blue
+                'rgba(255, 107, 157, 0.8)',  // pink
+                'rgba(196, 69, 105, 0.8)',   // darker pink
+                'rgba(147, 51, 234, 0.8)',   // purple
+                'rgba(6, 182, 212, 0.8)',    // cyan
+                'rgba(249, 115, 22, 0.8)',   // orange
+                'rgba(34, 197, 94, 0.8)',    // green
+                'rgba(245, 158, 11, 0.8)'    // yellow
+            ];
+            
+            // Create 25-35 bubbles for maximum excitement!
+            const bubbleCount = Math.floor(Math.random() * 11) + 25;
+            
+            for (let i = 0; i < bubbleCount; i++) {
+                const bubble = document.createElement('div');
+                bubble.className = 'bubble-explosion-particle';
+                
+                // Random size between 4px and 16px
+                const size = Math.random() * 12 + 4;
+                bubble.style.width = size + 'px';
+                bubble.style.height = size + 'px';
+                
+                // Random color
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                bubble.style.background = `radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.9), ${color})`;
+                
+                // Position at button center
+                bubble.style.left = centerX + 'px';
+                bubble.style.top = centerY + 'px';
+                bubble.style.position = 'fixed';
+                
+                // Random direction and distance
+                const angle = (Math.PI * 2 * i) / bubbleCount + (Math.random() - 0.5) * 0.5;
+                const distance = Math.random() * 120 + 60;
+                const dx = Math.cos(angle) * distance;
+                const dy = Math.sin(angle) * distance;
+                
+                bubble.style.setProperty('--dx', dx + 'px');
+                bubble.style.setProperty('--dy', dy + 'px');
+                
+                // Random animation delay for staggered effect
+                bubble.style.animationDelay = Math.random() * 0.2 + 's';
+                
+                document.body.appendChild(bubble);
+                
+                // Remove bubble after animation
+                setTimeout(() => {
+                    if (bubble.parentNode) {
+                        bubble.remove();
+                    }
+                }, 1400);
+            }
+            
+            // Add excitement pulse to button
+            button.classList.add('excitement-pulse');
+            setTimeout(() => {
+                button.classList.remove('excitement-pulse');
+            }, 1200);
+        }
+        
+        // Add bubble explosion to all CTA buttons
+        document.querySelectorAll('.bubble-explosion').forEach(button => {
+            button.addEventListener('mouseenter', (e) => {
+                createBubbleExplosion(button, e);
+            });
+            
+            // Also trigger on click for mobile
+            button.addEventListener('click', (e) => {
+                createBubbleExplosion(button, e);
+            });
+        });
+        
         // Form functionality
         const formInputs = ['nombre', 'empresa', 'tipoProyecto', 'presupuesto', 'descripcion', 'fechaLimite'];
         const messagePreview = document.getElementById('messagePreview');
@@ -1618,5 +1857,5 @@
         // Initial call
         updateProgressBar();
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'979720d1321e154d',t:'MTc1NjkyMjIzMi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97974282d1a7154d',t:'MTc1NjkyMzYxMi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>

@@ -1242,6 +1242,7 @@
         </section>
     </main>
 
+
         <!-- Footer -->
     <footer class="bg-gradient-to-r from-sky-400 via-purple-500 via-pink-500 to-orange-500 text-white py-20 px-4 mt-20">
         <div class="max-w-7xl mx-auto">
@@ -1627,59 +1628,120 @@
                 createBubbleExplosion(button, e);
             });
         });
-        
-        // Form functionality
-        const formInputs = ['nombre', 'empresa', 'tipoProyecto', 'presupuesto', 'descripcion', 'fechaLimite'];
-        const messagePreview = document.getElementById('messagePreview');
-        const sendButton = document.getElementById('sendWhatsApp');
-        
-        function updatePreview() {
-            const nombre = document.getElementById('nombre').value;
-            const empresa = document.getElementById('empresa').value;
-            const tipoProyecto = document.getElementById('tipoProyecto').value;
-            const presupuesto = document.getElementById('presupuesto').value;
-            const descripcion = document.getElementById('descripcion').value;
-            const fechaLimite = document.getElementById('fechaLimite').value;
-            
-            if (!nombre || !tipoProyecto || !descripcion) {
-                messagePreview.textContent = 'Completa los campos obligatorios para ver cómo quedará tu mensaje...';
-                sendButton.disabled = true;
-                return;
-            }
-            
-            let message = `¡Hola! Soy ${nombre}`;
-            if (empresa) message += ` de ${empresa}`;
-            message += `.\n\nEstoy interesado en solicitar una cotización para un proyecto de ${tipoProyecto}.\n\n`;
-            message += `📋 DETALLES DEL PROYECTO:\n${descripcion}\n\n`;
-            
-            if (presupuesto) {
-                message += `💰 PRESUPUESTO ESTIMADO: ${presupuesto}\n\n`;
-            }
-            
-            if (fechaLimite) {
-                const fecha = new Date(fechaLimite).toLocaleDateString('es-ES');
-                message += `📅 FECHA LÍMITE: ${fecha}\n\n`;
-            }
-            
-            message += `¿Podrías ayudarme con una cotización detallada?\n\n¡Gracias! ✨`;
-            
-            messagePreview.textContent = message;
-            sendButton.disabled = false;
+    
+    
+    //FUNCION FORMULARIO WHATSAPP
+//     document.addEventListener('DOMContentLoaded', () => {
+//     const nombre = document.getElementById('nombre');
+//     const empresa = document.getElementById('empresa');
+//     const tipoProyecto = document.getElementById('tipoProyecto');
+//     const descripcion = document.getElementById('descripcion');
+//     const fechaEspecifica = document.getElementById('fechaEspecifica');
+//     const fechaRadios = document.getElementsByName('fechaLimite');
+//     const messagePreview = document.getElementById('messagePreview');
+//     const sendButton = document.getElementById('sendWhatsApp');
+
+//     function getFechaLimite() {
+//         if (fechaRadios[0].checked) { // con fecha
+//             return fechaEspecifica.value ? new Date(fechaEspecifica.value).toLocaleDateString('es-ES') : '[Fecha no especificada]';
+//         } else if (fechaRadios[1].checked) { // sin fecha
+//             return 'Sin fecha límite';
+//         }
+//         return '';
+//     }
+
+//     function updatePreview() {
+//         if (!nombre.value || !tipoProyecto.value || !descripcion.value) {
+//             messagePreview.textContent = 'Completa los campos obligatorios para ver cómo quedará tu mensaje...';
+//             sendButton.disabled = true;
+//             return;
+//         }
+
+//         let message = `¡Hola! Soy ${nombre.value}`;
+//         if (empresa.value) message += ` de ${empresa.value}`;
+//         message += `.\n\nEstoy interesado en solicitar una cotización para un proyecto de ${tipoProyecto.value}.\n\n`;
+//         message += `📋 DETALLES DEL PROYECTO:\n${descripcion.value}\n\n`;
+//         const fecha = getFechaLimite();
+//         if (fecha) message += `📅 FECHA LÍMITE: ${fecha}\n\n`;
+//         message += `¿Podrías ayudarme con una cotización detallada?\n\n¡Gracias! ✨`;
+
+//         messagePreview.textContent = message;
+//         sendButton.disabled = false;
+//     }
+
+//     // Escucha cambios en todos los inputs y selects
+//     [nombre, empresa, tipoProyecto, descripcion, fechaEspecifica].forEach(el => {
+//         el.addEventListener('input', updatePreview);
+//         el.addEventListener('change', updatePreview);
+//     });
+//     fechaRadios.forEach(radio => radio.addEventListener('change', updatePreview));
+
+//     sendButton.addEventListener('click', () => {
+//         const message = encodeURIComponent(messagePreview.textContent);
+//         const whatsappUrl = `https://wa.me/523521463934?text=${message}`;
+//         window.open(whatsappUrl, '_blank');
+//     });
+// });
+
+document.addEventListener('DOMContentLoaded', () => {
+    const nombre = document.getElementById('nombre');
+    const empresa = document.getElementById('empresa');
+    const tipoProyecto = document.getElementById('tipoProyecto');
+    const descripcion = document.getElementById('descripcion');
+    const fechaEspecifica = document.getElementById('fechaEspecifica');
+    const fechaRadios = document.getElementsByName('fechaLimite');
+    const messagePreview = document.getElementById('messagePreview');
+    const sendButton = document.getElementById('sendWhatsApp');
+
+    function getFechaLimite() {
+        if (fechaRadios[0].checked) {
+            return fechaEspecifica.value ? new Date(fechaEspecifica.value).toLocaleDateString('es-ES') : '[Fecha no especificada]';
+        } else if (fechaRadios[1].checked) {
+            return 'Sin fecha límite';
         }
-        
-        // Add event listeners to form inputs
-        formInputs.forEach(inputId => {
-            const element = document.getElementById(inputId);
-            element.addEventListener('input', updatePreview);
-            element.addEventListener('change', updatePreview);
-        });
-        
-        // Send to WhatsApp
-        sendButton.addEventListener('click', () => {
-            const message = encodeURIComponent(messagePreview.textContent);
-            const whatsappUrl = `https://wa.me/523521463934?text=${message}`;
-            window.open(whatsappUrl, '_blank');
-        });
+        return '';
+    }
+
+    function updatePreview() {
+        if (!nombre.value || !tipoProyecto.value || !descripcion.value) {
+            messagePreview.textContent = 'Completa los campos obligatorios para ver cómo quedará tu mensaje...';
+            sendButton.disabled = true;
+            return;
+        }
+
+        // Vista previa con emojis seguros
+        let preview = `👋 ¡Hola! Soy ${nombre.value}`;
+        if (empresa.value) preview += ` de ${empresa.value}`;
+        preview += `.\n\nEstoy interesado en solicitar una cotización para un proyecto de ${tipoProyecto.value}.\n\n`;
+        preview += `📋 DETALLES DEL PROYECTO:\n${descripcion.value}\n\n`;
+        preview += `📅 FECHA LÍMITE: ${getFechaLimite()}\n\n`;
+        preview += `💬 ¿Podrías ayudarme con una cotización detallada?\n\n✨ ¡Gracias!`;
+
+        messagePreview.textContent = preview;
+        sendButton.disabled = false;
+    }
+
+    [nombre, empresa, tipoProyecto, descripcion, fechaEspecifica].forEach(el => {
+        el.addEventListener('input', updatePreview);
+        el.addEventListener('change', updatePreview);
+    });
+    fechaRadios.forEach(radio => radio.addEventListener('change', updatePreview));
+
+    sendButton.addEventListener('click', () => {
+        // Mensaje final con emojis seguros
+        let message = `👋 ¡Hola! Soy ${nombre.value}`;
+        if (empresa.value) message += ` de ${empresa.value}`;
+        message += `.\n\nEstoy interesado en solicitar una cotización para un proyecto de ${tipoProyecto.value}.\n\n`;
+        message += `📋 DETALLES DEL PROYECTO:\n${descripcion.value}\n\n`;
+        message += `📅 FECHA LÍMITE: ${getFechaLimite()}\n\n`;
+        message += `💬 ¿Podrías ayudarme con una cotización detallada?\n\n✨ ¡Gracias!`;
+
+        // Abrir WhatsApp usando la API oficial
+        const whatsappUrl = `https://api.whatsapp.com/send?phone=523521463934&text=${encodeURIComponent(message)}`;
+        window.open(whatsappUrl, '_blank');
+    });
+});
+//TERMINA FUNCION FORMULARIO WHATSAPP
         
         // Progress bar functionality
         function updateProgressBar() {
